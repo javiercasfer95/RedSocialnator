@@ -2,7 +2,8 @@ package com.uniovi.entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity 
+@Table(name = "user")
 public class User {
 
 	@Id
