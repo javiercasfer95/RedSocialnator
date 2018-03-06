@@ -15,6 +15,8 @@ public class User {
 	private String lastName;
 	private String role;
 	private String password;
+	
+	//No se almacena en la tabla
 	@Transient
 	private String passwordConfirm;
 
