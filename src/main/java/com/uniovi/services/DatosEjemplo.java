@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.User;
 
-@Service // Si se quiere desactivar la carga automatica de datos se debe comentar esta
-			// linea.
+
+
+//@Service // Si se quiere desactivar la carga automatica de datos se debe comentar esta linea.
 public class DatosEjemplo {
 	@Autowired
 	private UserService usersService;
