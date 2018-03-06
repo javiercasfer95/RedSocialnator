@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uniovi.entities.User;
 import com.uniovi.services.RoleService;
@@ -66,13 +68,36 @@ public class UserController {
 	public String login(Model model) {
 		return "login";
 	}
-	
+
+	@RequestMapping("/user/delete/{id}")
+	public String delete(@PathVariable Long id) {
+		userService.deleteUser(id);
+		return "redirect:/debug/list";
+	}
+
+	// @RequestMapping(value = "/debug/list")
+	// public String debugListUsers(Model model, Pageable pageable) {
+	// Page<User> users = userService.getUsers(pageable);
+	// model.addAttribute("usersList", users.getContent());
+	// model.addAttribute("page", users);
+	// return "login";
+	// }
+
+	// DEBUG
+
 	@RequestMapping(value = "/debug/list")
-	public String debugListUsers(Model model, Pageable pageable) {
+	public String debugListUsers(Pageable pageable, Model model,
+			@RequestParam(value = "", required = false) String searchText) {
 		Page<User> users = userService.getUsers(pageable);
-		model.addAttribute("usersList", users.getContent());
+		if (searchText != null && !searchText.isEmpty()) {
+			users = userService.searchUserByEmailAndName(pageable, searchText);
+			model.addAttribute("usersList", users.getContent());
+		} else {
+			model.addAttribute("usersList", users.getContent());
+		}
+
 		model.addAttribute("page", users);
-		return "login";
+		return "debug/list";
 	}
 
 }

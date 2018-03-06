@@ -8,11 +8,10 @@
 
 	<div class="container" style="text-align: center">
 		<h2 th:text="#{welcome.message}"></h2>
-		<h3>Esta es una zona privada la web</h3>
+		<h3>Esta es una zona privada la web, el log in ha funcionado</h3>
 		<p>
 			Usuario Autenticado como : <span
-				sec:authentication="principal.username" th:inline="text"> <!--  <b
-				th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b> -->
+				sec:authentication="principal.username" th:inline="text"> 
 		</p>
 		
 		<!-- <p>
@@ -20,8 +19,8 @@
 		</p> -->
 
 
-		<p>Notas del usuario</p>
-		<div class="table-responsive">
+		<!-- <p>Notas del usuario</p> -->
+		<!-- 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -44,7 +43,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</div> -->
 	</div>
 
 	<footer th:replace="fragments/footer" />

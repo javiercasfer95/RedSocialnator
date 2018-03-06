@@ -25,11 +25,11 @@ public class DatosEjemplo {
 		User user2 = new User("joni@correo.es", "Joni", "Valles");
 		user2.setPassword("123456");
 		user2.setRole(rolesService.getRoles()[0]);
-		// P á g i n a 29 | 41 TEMA 3
-		// Sistemas Distribuidos e Internet
+		
 		User user3 = new User("admin@correo.es", "Admin", "admin");
 		user3.setPassword("123456");
-		user3.setRole(rolesService.getRoles()[0]);
+		user3.setRole(rolesService.getRoles()[1]);
+		System.out.println(user3.getRole());
 
 		// User user4 = new User("99999993D", "Marta", "Almonte");
 		// user4.setPassword("123456");

@@ -43,7 +43,7 @@ public class UserService {
 		usersRepository.save(user);
 	}
 
-	public User getUserByDni(String email) {
+	public User getUserByEmail(String email) {
 		return usersRepository.findByEmail(email);
 	}
 
@@ -54,7 +54,7 @@ public class UserService {
 	/*
 	 * BUSQUEDA
 	 */
-	public Page<User> searchUserByDNIAndName(Pageable pageable, String searchText) {
+	public Page<User> searchUserByEmailAndName(Pageable pageable, String searchText) {
 		Page<User> users = new PageImpl<User>(new LinkedList());
 		searchText = "%" + searchText + "%";
 		// if (user.getRole().equals("ROLE_STUDENT")) {
