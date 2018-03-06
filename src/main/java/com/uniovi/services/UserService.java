@@ -51,6 +51,24 @@ public class UserService {
 		usersRepository.delete(id);
 	}
 
+	public List<String> getAllEmail() {
+		List<User> usuarios = usersRepository.findAll();
+		List<String> correos = new ArrayList<>();
+		for (User u : usuarios) {
+			correos.add(u.getEmail());
+		}
+		return correos;
+	}
+	
+	public boolean correctPassword(String password) {
+		List<User> usuarios = usersRepository.findAll();
+		for(User u : usuarios) {
+			if(u.getPassword().equals(password))
+				return true;
+		}
+		return false;
+	}
+
 	/*
 	 * BUSQUEDA
 	 */

@@ -19,16 +19,40 @@ import com.uniovi.entities.User;
 import com.uniovi.services.RoleService;
 import com.uniovi.services.SecurityService;
 import com.uniovi.services.UserService;
+import com.uniovi.validator.LogInFormValidator;
 import com.uniovi.validator.SignUpFromValidator;
 
 @Controller
 public class UserController {
+
+	/*
+	 * 
+	 * COSAS QUE FALTAN
+	 * 
+	 * Que en el login se diga porque ha fallado cuando no se ha podido iniciar
+	 * sesion. Puede ser por que el correo no exista o porque la contraseña este
+	 * mal. En la teoria tema 3 y pag 48 hay una posible solucion
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 
 	@Autowired
 	UserService userService;
 
 	@Autowired
 	private SignUpFromValidator signUpFormValidator;
+
+	@Autowired
+	private LogInFormValidator logInFormValidator;
 
 	@Autowired
 	SecurityService securityService;
@@ -67,6 +91,25 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 		return "login";
+	}
+
+	/**
+	 * Log in con la comprobacion de lo que esta bien y de lo que esta mal
+	 * 
+	 * @param user
+	 * @param result
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@Validated User user, BindingResult result, Model model) {
+		// logInFormValidator.validate(user, result);
+		// if (result.hasErrors()) {
+		// return "login";
+		// }
+		//
+		// securityService.autoLogin(user.getEmail(), user.getPassword());
+		return "home";
 	}
 
 	@RequestMapping("/user/delete/{id}")
