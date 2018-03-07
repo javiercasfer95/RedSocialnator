@@ -63,24 +63,16 @@ public class SignUpFromValidator implements Validator {
 
 	private boolean emailCorrecto(String email) {
 		String[] emailParts = email.split("@");
-		System.out.println("DEBUG----------------VALIDACION");
-		System.out.println("DEBUG---------------:" + email);
-		System.out.println("DEBUG---------------:" + emailParts.length);
+
 		if (emailParts.length != 2) {
 			return false;
 		}
 		String dominio = emailParts[1];
-		String[] emailDomain = dominio.split(".");
-		System.out.println("DEBUG---------------:" + dominio);
-		System.out.println("DEBUG---------------:" + emailDomain.length);
-		/*
-		 * SE DEBE TERMINAR ESTA COMPROBACION!!! *********
-		 * 
-		 * el problema es que dominio no se parte por el punto, no se sabe por que
-		 */
-		// if (emailDomain.length != 2) {
-		// return false;
-		// }
+		String[] emailDomain = dominio.split("\\.");
+
+		if (emailDomain.length != 2) {
+			return false;
+		}
 		return true;
 
 	}
