@@ -12,8 +12,16 @@
 
 
 		<div class="collapse navbar-collapse" id="myNavbar">
+		
+		
+		<!-- IZQUIERDA -->
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="/home">Home</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/user/list"
+					th:text="#{usuarios.field}"> <span
+						class="glyphicon glyphicon-user"></span>Usuarios
+				</a></li>
+				
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -27,8 +35,28 @@
 								Usuarios</a></li>
 					</ul></li>
 			</ul>
-
+			
+			
+			<!-- DERECHA -->
 			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a id="btnLanguage"
+					href="                 #" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> <span th:text="#{language.change}"></span>
+						<span class="caret"></span>
+				</a>
+					<ul id="languageDropdownMenuButton" class="dropdown-menu">
+						<li><a id="btnEnglish" value="EN"> <img
+								th:src="@{/img/if_uk_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.en}">Inglés</span>
+						</a></li>
+						<li><a id="btnSpanish" value="ES"> <img
+								th:src="@{/img/if_spain_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.es}">Español</span>
+						</a></li>
+					</ul></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/signup"
 					th:text="#{signup.message}" th:text='#{registrarse.sesion}'> <!-- <span
 						class="glyphicon glyphicon-user" ></span> Registrate -->
@@ -37,8 +65,8 @@
 					th:text="#{login.message}" th:text='#{iniciar.sesion}'> <!-- <span
 						class="glyphicon glyphicon-log-in" th:text='#{iniciar.sesion}'></span>Identifícate -->
 				</a></li>
-				<li sec:authorize="isAuthenticated()"><a href="/logout" th:text='#{cerrar.sesion}'>
-						<!-- <span
+				<li sec:authorize="isAuthenticated()"><a href="/logout"
+					th:text='#{cerrar.sesion}'> <!-- <span
 						class="glyphicon glyphicon-log-out" th:text='#{cerrar.sesion}'></span> Desconectar -->
 				</a></li>
 			</ul>

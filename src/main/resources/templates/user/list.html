@@ -7,9 +7,14 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2>Usuarios disponibles. ADMIN</h2>
+		<h2>
+			<div class="container">
+				<p  th:text='#{welcome.message}' /> <p th:text='${user.name}' />
+			</div>
+		</h2>
+		<h3 th:text='#{text.usuariosDisponibles}'>Usuarios</h3>
 
-		<form class="navbar-form" action="/debug/list">
+		<form class="navbar-form" action="/user/list">
 			<div class="form-group">
 				<input name="searchText" type="text" class="form-control" size="50"
 					placeholder="Buscar por Email o nombre del alumno">
@@ -23,12 +28,9 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Email</th>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Role</th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
+						<th th:text='#{email.field}'>Email</th>
+						<th th:text='#{nombre.field}'>Nombre</th>
+						<th th:text='#{apellidos.field}'>Apellidos</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
@@ -36,13 +38,11 @@
 				</thead>
 				<tbody>
 					<tr th:each="user : ${usersList}">
-						<td th:text="${user.email}">71888888X</td>
-						<td th:text="${user.name}">Nombre del alumno</td>
-						<td th:text="${user.lastName}">Apellidos del alumno</td>
-						<td th:text="${user.role}">Role guapo</td>
-						<td><a th:href="${' L' + user.id}">detalles</a></td>
-						<td><a th:href="${'/user/edit/' + user.email}">modificar</a></td>
-						<td><a th:href="${'/user/delete/' + user.id}">eliminar</a></td>
+						<td th:text="${user.email}">ejemplo@correo.es</td>
+						<td th:text="${user.name}">Nombre del usuario</td>
+						<td th:text="${user.lastName}">Apellidos del usuario</td>
+						<td><a th:text='#{detalles.field}'
+							th:href="${' L' + user.email}">detalles</a></td>
 					</tr>
 				</tbody>
 			</table>

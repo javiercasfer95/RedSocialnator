@@ -1,8 +1,11 @@
 package com.uniovi.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,7 @@ public class HomeController {
 
 	@Autowired
 	UserService userService;
-	
+
 	@RequestMapping("/")
 	public String index(Principal principal, Model model) {
 		// String dni = principal.getName();
@@ -26,10 +29,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
-	public String home(Principal principal, Model model) {
-		String email = principal.getName();
-		User user = userService.getUserByEmail(email);
-		model.addAttribute("user", user);
-		return "home";
+	public String home(Pageable pageable, Principal principal, Model model) {
+//		String email = principal.getName();
+//		User user = userService.getUserByEmail(email);
+//		model.addAttribute("user", user);
+//		Page<User> userList = userService.getNotAdminUsers(pageable);
+//		model.addAttribute("usersList", userList.getContent());
+//		model.addAttribute("page", userList);
+//		return "user/list";
+		return "redirect:/user/list";
 	}
 }

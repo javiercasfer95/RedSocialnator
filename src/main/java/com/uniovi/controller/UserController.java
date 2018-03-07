@@ -1,5 +1,6 @@
 package com.uniovi.controller;
 
+import java.security.Principal;
 import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,27 @@ public class UserController {
 
 	@Autowired
 	RoleService roleService;
+
+	@RequestMapping("/user/list")
+	public String getListadoUsuarios(Pageable pageable, Principal principal, Model model,
+			@RequestParam(value = "", required = false) String searchText) {
+
+		String email = principal.getName();
+		User user = userService.getUserByEmail(email);
+		model.addAttribute("user", user);
+		Page<User> users = userService.getUsers(pageable);
+
+		if (searchText != null && !searchText.isEmpty()) {
+			users = userService.searchUserByEmailAndName(pageable, searchText);
+			model.addAttribute("usersList", users.getContent());
+			model.addAttribute("page", users);
+		} else {
+			model.addAttribute("usersList", users.getContent());
+			model.addAttribute("page", users);
+		}
+
+		return "user/list";
+	}
 
 	/**
 	 * Es importante enviar obtener un user vacio de tipo get para que el validador

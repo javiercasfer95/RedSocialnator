@@ -21,6 +21,9 @@ public class UserService {
 	private UsersRepository usersRepository;
 
 	@Autowired
+	private RoleService roleService;
+
+	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@PostConstruct
@@ -31,6 +34,11 @@ public class UserService {
 		// List<User> users = new ArrayList<User>();
 		Page<User> users = usersRepository.findAll(pageable);
 		// usersRepository.findAll().forEach(users::add);
+		return users;
+	}
+
+	public Page<User> getNotAdminUsers(Pageable pageable) {
+		Page<User> users = usersRepository.findNotAdminUsers(pageable);
 		return users;
 	}
 
@@ -59,11 +67,11 @@ public class UserService {
 		}
 		return correos;
 	}
-	
+
 	public boolean correctPassword(String password) {
 		List<User> usuarios = usersRepository.findAll();
-		for(User u : usuarios) {
-			if(u.getPassword().equals(password))
+		for (User u : usuarios) {
+			if (u.getPassword().equals(password))
 				return true;
 		}
 		return false;

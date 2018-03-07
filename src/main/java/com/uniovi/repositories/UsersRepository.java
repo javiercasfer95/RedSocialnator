@@ -18,6 +18,9 @@ public interface UsersRepository extends CrudRepository<User, Long> {
 	void delete(Long id);
 
 	Page<User> findAll(Pageable pageable);
+	
+	@Query("SELECT u FROM User u Where u.role LIKE 'ROLE_USER'")
+	Page<User> findNotAdminUsers(Pageable pageable);
 
 	List<User> findAll();
 

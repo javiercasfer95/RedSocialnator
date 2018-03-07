@@ -70,7 +70,7 @@ public class SignUpFromValidator implements Validator {
 			return false;
 		}
 		String dominio = emailParts[1];
-		String[] emailDomain = dominio.split(".");
+		String[] emailDomain = dominio.split("\\.");
 		System.out.println("DEBUG---------------:" + dominio);
 		System.out.println("DEBUG---------------:" + emailDomain.length);
 		/*
@@ -78,9 +78,9 @@ public class SignUpFromValidator implements Validator {
 		 * 
 		 * el problema es que dominio no se parte por el punto, no se sabe por que
 		 */
-		// if (emailDomain.length != 2) {
-		// return false;
-		// }
+		 if (emailDomain.length != 2) {
+		 return false;
+		 }
 		return true;
 
 	}
