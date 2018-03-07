@@ -6,6 +6,8 @@ import org.springframework.security.authentication.event.AuthenticationFailureBa
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
+import com.uniovi.entities.User;
+import com.uniovi.services.UserService;
 import com.uniovi.validator.LogInFormValidator;
 
 @Component
@@ -13,12 +15,24 @@ public class AuthenticationFailureListener implements ApplicationListener<Authen
 
 	@Autowired
 	private LogInFormValidator logInFormValidator;
+	
+	UserService userService = new UserService();
+
 
 	@Override
 	public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent e) {
 		String username = e.getAuthentication().getName();
+		
 		WebAuthenticationDetails detalles = (WebAuthenticationDetails) e.getAuthentication().getDetails();
 		String ip = detalles.getRemoteAddress();
 		String idSession = detalles.getSessionId();
+		
+		User user = userService.getUserByEmail(username); //el getName de arriba no se si coge el nombre de usuario o el email
+		if(user != null) { //Si no es null es que esta metiendo el login mal, sino estaria autenticado
+			//contador? 
+		}
 	}
+	
+	
+	
 }
