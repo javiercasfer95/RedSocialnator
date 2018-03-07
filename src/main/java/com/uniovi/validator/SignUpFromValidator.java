@@ -35,15 +35,15 @@ public class SignUpFromValidator implements Validator {
 		 * Mira a ver si el campo o los campos tienen un espacio en blanco o esta vacio
 		 * y lo añade a Error.empty del propertie para devolverlo en el idoma adecuado
 		 */
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "Error.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Error.empty");
 
 		// Hace una peticion y se obtiene la validacion de todos estos campos.
-		if (user.getEmail().length() < 5 || user.getEmail().length() > 24) {
-			errors.rejectValue("dni", "Error.signup.dni.length");
+		if (!emailCorrecto(user.getEmail())) {
+			errors.rejectValue("email", "Error.signup.email.length");
 		}
 
-		if (usersService.getUserByDni(user.getEmail()) != null) {
-			errors.rejectValue("dni", "Error.signup.dni.duplicate");
+		if (usersService.getUserByEmail(user.getEmail()) != null) {
+			errors.rejectValue("email", "Error.signup.email.duplicate");
 		}
 		if (user.getName().length() < 5 || user.getName().length() > 24) {
 			errors.rejectValue("name", "Error.signup.name.length");
@@ -59,5 +59,29 @@ public class SignUpFromValidator implements Validator {
 		if (!user.getPasswordConfirm().equals(user.getPassword())) {
 			errors.rejectValue("passwordConfirm", "Error.signup.passwordConfirm.coincidence");
 		}
+	}
+
+	private boolean emailCorrecto(String email) {
+		String[] emailParts = email.split("@");
+
+		if (emailParts.length != 2) {
+			return false;
+		}
+		String dominio = emailParts[1];
+		String[] emailDomain = dominio.split("\\.");
+		System.out.println("DEBUG---------------:" + dominio);
+		System.out.println("DEBUG---------------:" + emailDomain.length);
+		/*
+		 * SE DEBE TERMINAR ESTA COMPROBACION!!! *********
+		 * 
+		 * el problema es que dominio no se parte por el punto, no se sabe por que
+		 */
+
+
+		if (emailDomain.length != 2) {
+			return false;
+		}
+		return true;
+
 	}
 }

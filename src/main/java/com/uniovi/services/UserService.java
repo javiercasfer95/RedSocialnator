@@ -21,6 +21,9 @@ public class UserService {
 	private UsersRepository usersRepository;
 
 	@Autowired
+	private RoleService roleService;
+
+	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@PostConstruct
@@ -34,6 +37,11 @@ public class UserService {
 		return users;
 	}
 
+	public Page<User> getNotAdminUsers(Pageable pageable) {
+		Page<User> users = usersRepository.findNotAdminUsers(pageable);
+		return users;
+	}
+
 	public User getUser(Long id) {
 		return usersRepository.findOne(id);
 	}
@@ -43,7 +51,7 @@ public class UserService {
 		usersRepository.save(user);
 	}
 
-	public User getUserByDni(String email) {
+	public User getUserByEmail(String email) {
 		return usersRepository.findByEmail(email);
 	}
 
@@ -51,10 +59,28 @@ public class UserService {
 		usersRepository.delete(id);
 	}
 
+	public List<String> getAllEmail() {
+		List<User> usuarios = usersRepository.findAll();
+		List<String> correos = new ArrayList<>();
+		for (User u : usuarios) {
+			correos.add(u.getEmail());
+		}
+		return correos;
+	}
+
+	public boolean correctPassword(String password) {
+		List<User> usuarios = usersRepository.findAll();
+		for (User u : usuarios) {
+			if (u.getPassword().equals(password))
+				return true;
+		}
+		return false;
+	}
+
 	/*
 	 * BUSQUEDA
 	 */
-	public Page<User> searchUserByDNIAndName(Pageable pageable, String searchText) {
+	public Page<User> searchUserByEmailAndName(Pageable pageable, String searchText) {
 		Page<User> users = new PageImpl<User>(new LinkedList());
 		searchText = "%" + searchText + "%";
 		// if (user.getRole().equals("ROLE_STUDENT")) {

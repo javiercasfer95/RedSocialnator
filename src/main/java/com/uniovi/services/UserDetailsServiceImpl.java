@@ -33,14 +33,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = usersRepository.findByEmail(email);
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-		// grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ESTUDIANTE"));
 
 		/*
 		 * Con la siguiente linea le estamos asignando un rol al usuario. Asi luego el
 		 * usuario de spring sabra que hacer con él
 		 */
 		grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
-
+		// grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		// El user que viene a continuacion es el user que maneja spring, no el nuestro
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
 				grantedAuthorities);

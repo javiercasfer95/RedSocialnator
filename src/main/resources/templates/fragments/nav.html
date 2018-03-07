@@ -9,20 +9,84 @@
 			</button>
 			<img src="/img/student-48.png" alt="logo" />
 		</div>
+
+
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<!-- is authenticated para que solo se muestre si esta autenticado -->
+		
+		
+		<!-- IZQUIERDA -->
+			<ul class="nav navbar-nav navbar-left">
+				<li><a href="/home">Home</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/user/list"
+					th:text="#{usuarios.field}"> <span
+						class="glyphicon glyphicon-user"></span>Usuarios
+				</a></li>
+				
+				<li id="users-menu" class="dropdown"
+					sec:authorize="hasRole('ROLE_ADMIN')"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#"
+					th:texh="#{gestion.user}"> Gestión de Usuarios <span
+						class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="/notFound" th:texh="#{agregar.user}">Agregar
+								usuario</a></li>
+						<li><a href="/debug/list" th:texh="#{listar.user}">Ver
+								Usuarios</a></li>
+					</ul></li>
+			</ul>
+			
+			
+			<!-- DERECHA -->
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a id="btnLanguage"
+					href="                 #" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> <span th:text="#{language.change}"></span>
+						<span class="caret"></span>
+				</a>
+					<ul id="languageDropdownMenuButton" class="dropdown-menu">
+						<li><a id="btnEnglish" value="EN"> <img
+								th:src="@{/img/if_uk_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.en}">Inglés</span>
+						</a></li>
+						<li><a id="btnSpanish" value="ES"> <img
+								th:src="@{/img/if_spain_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.es}">Español</span>
+						</a></li>
+					</ul></li>
+				<li sec:authorize="!isAuthenticated()"><a href="/signup"
+					th:text="#{signup.message}" th:text='#{registrarse.sesion}'> <!-- <span
+						class="glyphicon glyphicon-user" ></span> Registrate -->
+				</a></li>
+				<li sec:authorize="!isAuthenticated()"><a href="/login"
+					th:text="#{login.message}" th:text='#{iniciar.sesion}'> <!-- <span
+						class="glyphicon glyphicon-log-in" th:text='#{iniciar.sesion}'></span>Identifícate -->
+				</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/logout"
+					th:text='#{cerrar.sesion}'> <!-- <span
+						class="glyphicon glyphicon-log-out" th:text='#{cerrar.sesion}'></span> Desconectar -->
+				</a></li>
+			</ul>
+
+		</div>
+
+		<!-- 		<div class="collapse navbar-collapse" id="myNavbar">
+			is authenticated para que solo se muestre si esta autenticado
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 				<li><a href="/home">Home</a></li>
 				<li id="marks-menu" class="dropdown"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
-					th:texh="#{gestion.nota}"> Gestión de notas <span class="caret"></span>
+					th:texh="#{gestion.nota}"> GestiÃ³n de notas <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
 
-						<!-- P á g i n a 20 | 41 Sistemas Distribuidos e Internet  PRACTICA 3-->
+						P Ã¡ g i n a 20 | 41 Sistemas Distribuidos e Internet  PRACTICA 3
 
-						<!-- 	aqui lo mismo, solo se muestra si es profesor
- -->
+							aqui lo mismo, solo se muestra si es profesor
+
 						<li sec:authorize="hasRole('ROLE_PROFESSOR')"><a
 							href="/mark/add" th:texh="#{agregar.nota}">Agregar Nota</a></li>
 						<li><a href="/mark/list" th:texh="#{ver.nota}">Ver Notas</a></li>
@@ -30,7 +94,7 @@
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
-					th:texh="#{gestion.user}"> Gestión de Usuarios <span
+					th:texh="#{gestion.user}"> GestiÃ³n de Usuarios <span
 						class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
@@ -51,28 +115,28 @@
 						<li><a id="btnEnglish" value="EN"> <img
 								th:src="@{/img/if_uk_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.en}">Inglés</span>
+								th:text="#{language.en}">InglÃ©s</span>
 						</a></li>
 						<li><a id="btnSpanish" value="ES"> <img
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.es}">Español</span>
+								th:text="#{language.es}">EspaÃ±ol</span>
 						</a></li>
 					</ul></li>
-				<!-- IMPORTANTE TENER ESTO EN CUENTA -->
+				IMPORTANTE TENER ESTO EN CUENTA
 				<li sec:authorize="!isAuthenticated()"><a href="/signup"
 					th:text="#{signup.message}"> <span
 						class="glyphicon glyphicon-user"></span> Registrate
 				</a></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/login"
 					th:text="#{login.message}"> <span
-						class="glyphicon glyphicon-log-in"></span> Identifícate
+						class="glyphicon glyphicon-log-in"></span> IdentifÃ­cate
 				</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
 						class="glyphicon glyphicon-log-out"></span> Desconectar
 				</a></li>
 			</ul>
-		</div>
+		</div> -->
 	</div>
 </nav>
 
