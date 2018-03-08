@@ -15,7 +15,7 @@ import com.uniovi.entities.User;
 // Si se quiere desactivar la carga automatica de datos se debe comentar esta
 // linea.
 
-//@Service
+@Service
 public class DatosEjemplo {
 	@Autowired
 	private UserService usersService;

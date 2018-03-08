@@ -1,9 +1,11 @@
 package com.uniovi.entities;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
-@Entity 
-@Table(name = "user")
+@Entity
+// @Table(name = "user")
 public class User {
 
 	@Id
@@ -17,6 +19,12 @@ public class User {
 	private String password;
 	@Transient
 	private String passwordConfirm;
+
+	@OneToMany(mappedBy = "origen", cascade = CascadeType.ALL)
+	private Set<PeticionAmistad> peticionesRecibidas;
+
+	@OneToMany(mappedBy = "destino", cascade = CascadeType.ALL)
+	private Set<PeticionAmistad> peticionesEnviadas;
 
 	public User(String email, String name, String lastName) {
 		super();
@@ -132,7 +140,13 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
+
+	public Set<PeticionAmistad> getPeticionesRecibidas() {
+		return peticionesRecibidas;
+	}
+
+	public Set<PeticionAmistad> getPeticionesEnviadas() {
+		return peticionesEnviadas;
+	}
 
 }
