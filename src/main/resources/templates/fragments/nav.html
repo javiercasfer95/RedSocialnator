@@ -22,6 +22,11 @@
 						class="glyphicon glyphicon-user"></span>Usuarios
 				</a></li>
 				
+				<li sec:authorize="isAuthenticated()"><a href="/user/listRequests"
+					th:text="#{peticion.field}"> <span
+						class="glyphicon glyphicon-user"></span>Peticiones de amistad
+				</a></li>
+				
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
@@ -33,6 +38,7 @@
 								usuario</a></li>
 						<li><a href="/debug/list" th:texh="#{listar.user}">Ver
 								Usuarios</a></li>
+								
 					</ul></li>
 			</ul>
 			
