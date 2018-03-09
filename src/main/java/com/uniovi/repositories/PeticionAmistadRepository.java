@@ -24,4 +24,14 @@ public interface PeticionAmistadRepository extends CrudRepository<PeticionAmista
 //
 //	@Query("SELECT p FROM PeticionAmistad p Where p.destino.id = ?2.id")
 //	Page<PeticionAmistad> searchAllPeticionesToUser(Pageable pageable, User user);
+	
+	Page<PeticionAmistad> findAll(Pageable pageable);
+		
+	@Query("SELECT p FROM PeticionAmistad p Where p.destino.id = :#{#user.id}")
+	Page<PeticionAmistad> searchAllPeticionesToUser(Pageable pageable, @Param("user")User user);
+	
+	@Query("SELECT p FROM PeticionAmistad p Where p.origen.id = :#{#user.id}")
+	Page<PeticionAmistad> searchAllPeticionesFromUser(Pageable pageable, @Param("user")User user);
+
+
 }

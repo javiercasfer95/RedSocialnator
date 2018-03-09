@@ -82,27 +82,6 @@ public class UserController {
 		return "user/list";
 	}
 	
-	@RequestMapping("/user/listRequests")
-	public String getListadoPeticiones(Pageable pageable, Principal principal, Model model,
-			@RequestParam(value = "", required = false) String searchText) {
-
-		//Comprobar que el usuario ha añadido al otro
-		String email = principal.getName();
-		User user = userService.getUserByEmail(email);
-		model.addAttribute("user", user);
-		Page<User> users = userService.getUsers(pageable);
-
-		if (searchText != null && !searchText.isEmpty()) {
-			users = userService.searchUserByEmailAndName(pageable, searchText);
-			model.addAttribute("usersList", users.getContent());
-			model.addAttribute("page", users);
-		} else {
-			model.addAttribute("usersList", users.getContent());
-			model.addAttribute("page", users);
-		}
-
-		return "user/list";
-	}
 
 	/**
 	 * Es importante enviar obtener un user vacio de tipo get para que el validador

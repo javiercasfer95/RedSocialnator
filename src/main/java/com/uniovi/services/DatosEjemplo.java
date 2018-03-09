@@ -68,7 +68,7 @@ public class DatosEjemplo {
 		}
 
 		for (User user : usuariosAñadir) {
-			System.out.println("Usuario: " + user.toString());
+			//System.out.println("Usuario: " + user.toString());
 			usersService.addUser(user);
 			// try {
 			// TimeUnit.SECONDS.sleep(1);

@@ -16,7 +16,9 @@
 			</div>
 			<button type="submit" class="btn btn-default">Buscar</button>
 		</form>
-
+		<!-- DEBUG -->
+		<p id="demo"></p>
+		<!-- DEBUG -->
 		<p>Los usuarios que actualmente figuran en el sistema son los
 			siguientes:</p>
 		<div class="table-responsive">
@@ -41,6 +43,12 @@
 						<td th:text="${user.lastName}">Apellidos del alumno</td>
 						<td th:text="${user.role}">Role guapo</td>
 						<td><a th:href="${' L' + user.id}">detalles</a></td>
+						<td>
+							<button type="submit" class="btn btn-default"
+								th:id="${user.name}" onclick="change(this.id)"
+								th:text="'Agregar ' + ${user.name}"></button>
+						</td>
+
 						<td><a th:href="${'/user/edit/' + user.email}">modificar</a></td>
 						<td><a th:href="${'/user/delete/' + user.id}">eliminar</a></td>
 					</tr>

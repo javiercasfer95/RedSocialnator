@@ -21,17 +21,39 @@ public class PeticionAmistadService {
 	public void init() {
 	}
 
-	// public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable, User
-	// user) {
-	// Page<PeticionAmistad> peticiones =
-	// peticionAmistadRepository.searchAllPeticionesFromUser(pageable, user);
-	// return peticiones;
-	// }
-	//
-	// public Page<PeticionAmistad> getAllPeticionestoUser(Pageable pageable, User
-	// user) {
-	// Page<PeticionAmistad> peticiones =
-	// peticionAmistadRepository.searchAllPeticionesToUser(pageable, user);
-	// return peticiones;
-	// }
+	 public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable, User
+	 user) {
+	 Page<PeticionAmistad> peticiones =
+	 peticionAmistadRepository.searchAllPeticionesFromUser(pageable, user);
+	 return peticiones;
+	 }
+	 
+	 
+	 
+	 //OJO QUE ESTÁ HACIENDO UN FIND ALL
+	 
+	 
+	 public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable) {
+			Page<PeticionAmistad> requests = peticionAmistadRepository.findAll(pageable);
+			return requests;
+		}
+	 
+	 public Page<PeticionAmistad> getAllPeticionesToUser(Pageable pageable) {
+			Page<PeticionAmistad> requests = peticionAmistadRepository.findAll(pageable);
+			return requests;
+		}
+	 
+	 
+	 
+	 
+	//OJO QUE ESTÁ HACIENDO UN FIND ALL
+	
+	 public Page<PeticionAmistad> getAllPeticionesToUser(Pageable pageable, User
+	 user) {
+	 Page<PeticionAmistad> peticiones =
+	 peticionAmistadRepository.searchAllPeticionesToUser(pageable, user);
+	 return peticiones;
+	 }
+	 
+	 
 }
