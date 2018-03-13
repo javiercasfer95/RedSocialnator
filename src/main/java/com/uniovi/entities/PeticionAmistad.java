@@ -85,6 +85,12 @@ public class PeticionAmistad {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "PeticionAmistad [id=" + id + ", origen=" + origen + ", destino=" + destino + ", aceptada=" + aceptada
+				+ "]";
+	}
 	
 	
 

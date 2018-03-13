@@ -28,10 +28,10 @@ public interface PeticionAmistadRepository extends CrudRepository<PeticionAmista
 
 	Page<PeticionAmistad> findAll(Pageable pageable);
 
-	@Query("SELECT p FROM PeticionAmistad p Where p.destino = ?1")
+	@Query("SELECT p FROM PeticionAmistad p Where p.destino = ?1 AND p.aceptada = false")
 	Page<PeticionAmistad> searchPeticionesToUser(Pageable pageable, User user);
 	
-	@Query("SELECT p FROM PeticionAmistad p Where p.origen = ?1")
+	@Query("SELECT p FROM PeticionAmistad p Where p.origen = ?1 AND p.aceptada = false")
 	Page<PeticionAmistad> searchPeticionesFromUser(Pageable pageable, User user);
 
 	@Query("SELECT count(p) FROM PeticionAmistad p WHERE (p.origen = ?1 AND p.destino = ?2) OR (p.origen = ?2 AND p.destino = ?1)")
@@ -40,5 +40,7 @@ public interface PeticionAmistadRepository extends CrudRepository<PeticionAmista
 	// Page<PeticionAmistad> searchAllPeticionesFromUser(Pageable pageable,
 	// @Param("user")User user);
 	
+	@Query("SELECT p FROM PeticionAmistad p WHERE (p.origen = ?1 AND p.destino = ?2) OR (p.origen = ?2 AND p.destino = ?1)")
+	PeticionAmistad findByUsers(User origen, User destino);
 
 }

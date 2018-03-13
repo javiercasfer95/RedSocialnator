@@ -7,13 +7,8 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2>
-			<div class="container">
-				<p th:text='#{welcome.message}' />
-				<p th:text='${user.name}' />
-			</div>
-		</h2>
-		<h3 th:text='#{text.usuariosDisponibles}'>Usuarios</h3>
+		
+		<h2 th:text='#{text.usuariosDisponibles}'>Amigos</h2>
 
 		<form class="navbar-form" action="/user/list">
 			<div class="form-group">
@@ -22,32 +17,26 @@
 			</div>
 			<button type="submit" class="btn btn-default">Buscar</button>
 		</form>
-		<p id="demo"></p>
-		<p th:text="#{uruariosSistema.field}">Los usuarios que actualmente figuran en el sistema son los
-			siguientes:</p>
+		
 		<div class="table-responsive">
-			<table class="table table-hover" id="tablaUsuarios">
+			<table class="table table-hover" id="tablaAmigos">
 				<thead>
 					<tr>
 						<th th:text='#{email.field}'>Email</th>
 						<th th:text='#{nombre.field}'>Nombre</th>
 						<th th:text='#{apellidos.field}'>Apellidos</th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
+<!-- 						<th class="col-md-1"></th> -->
+						<th class="col-md-1"></th> 
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="user : ${usersList}">
+					<tr th:each="user : ${amigosList}">
 						<td th:text="${user.email}">ejemplo@correo.es</td>
 						<td th:text="${user.name}">Nombre del usuario</td>
 						<td th:text="${user.lastName}">Apellidos del usuario</td>
-						<td><a th:text='#{detalles.field}'
-							th:href="${' L' + user.email}">detalles</a></td>
-
-						<td><a th:id="'btn' + ${user.email}"
-							th:href="'/peticion/enviarPeticion?emailRecibe='+ ${user.email}"
-							th:text="'Agregar ' + ${user.name}" class="btn btn-primary" /> </td>
+						<!-- <td><a th:text='#{detalles.field}'
+							th:href="${' L' + user.email}">detalles</a></td> -->
+						<td><a href="/notFound">eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>

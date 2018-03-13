@@ -16,11 +16,17 @@
 
 			<!-- IZQUIERDA -->
 			<ul class="nav navbar-nav navbar-left">
-				<li><a href="/home">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/user/list"
 					th:text="#{usuarios.field}"> <span
 						class="glyphicon glyphicon-user"></span>Usuarios
 				</a></li>
+				
+				<li sec:authorize="isAuthenticated()"><a href="/user/myFriends"
+					th:text="#{amigos.field}"> <span
+						class="glyphicon glyphicon-user"></span>Friends
+				</a></li>
+				
 
 				<li id="users-menu" class="dropdown"
 					sec:authorize="isAuthenticated()"><a class="dropdown-toggle"

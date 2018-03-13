@@ -50,15 +50,15 @@ public class UserController {
 	@Autowired
 	private SignUpFromValidator signUpFormValidator;
 
-//	@Autowired
-//	private LogInFormValidator logInFormValidator;
+	// @Autowired
+	// private LogInFormValidator logInFormValidator;
 
 	@Autowired
 	SecurityService securityService;
 
 	@Autowired
 	PeticionAmistadRepository peticionAmistadRepository;
-	
+
 	@Autowired
 	RoleService roleService;
 
@@ -83,6 +83,18 @@ public class UserController {
 		}
 
 		return "user/list";
+	}
+
+	@RequestMapping("/user/myFriends")
+	public String getListadoAmigos(Pageable pageable, Principal principal, Model model) {
+
+		String email = principal.getName();
+		User user = userService.getUserByEmail(email);
+//		model.addAttribute("user", user);
+		Page<User> users = userService.getAllAmigos(pageable, user);
+		model.addAttribute("amigosList", users.getContent());
+		model.addAttribute("page", users);
+		return "user/myFriends";
 	}
 
 	/**
@@ -170,7 +182,7 @@ public class UserController {
 
 	@RequestMapping(value = { "/deleteAllUsers" })
 	public String deleteAllUsers(Model model) {
-		//peticionAmistadRepository.deleteAll();
+		// peticionAmistadRepository.deleteAll();
 		userService.deleteAllUsers();
 		return "redirect:home";
 	}

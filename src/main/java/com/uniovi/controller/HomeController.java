@@ -36,4 +36,13 @@ public class HomeController {
 //		return "user/list";
 		return "redirect:/user/list";
 	}
+	
+
+	@RequestMapping("/notFound")
+	public String notFound(Principal principal, Model model) {
+		// String dni = principal.getName();
+		// User user = usersService.getUserByDni(dni);
+		// model.addAttribute("user", user);
+		return "notFound";
+	}
 }

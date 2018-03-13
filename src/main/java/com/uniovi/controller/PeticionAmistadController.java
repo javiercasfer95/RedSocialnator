@@ -57,4 +57,16 @@ public class PeticionAmistadController {
 		return "redirect:/user/list";
 	}
 
+	@RequestMapping("/peticion/aceptarPeticion")
+	public String aceptarPeticion(Pageable pageabe, Model model, Principal principal,
+			@RequestParam String emailOrigen) {
+
+		// Para enviar peticiones me necesito a mi y necesito al que se la quiero enviar
+		String email = principal.getName();
+		User yo = userService.getUserByEmail(email);
+		User otroTio = userService.getUserByEmail(emailOrigen);
+		peticionAmistadService.aceptarPeticionAmistad(yo, otroTio);
+		return "redirect:/peticiones/listRecibidas";
+	}
+
 }

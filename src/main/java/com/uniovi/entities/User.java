@@ -26,6 +26,9 @@ public class User {
 	@OneToMany(mappedBy = "origen", cascade = CascadeType.ALL)
 	private Set<PeticionAmistad> peticionesEnviadas;
 
+	@OneToMany
+	private Set<User> amigos;
+
 	public User(String email, String name, String lastName) {
 		super();
 		this.email = email;
@@ -155,6 +158,14 @@ public class User {
 
 	public void setPeticionesRecibidas(Set<PeticionAmistad> peticionesRecibidas) {
 		this.peticionesRecibidas = peticionesRecibidas;
+	}
+
+	public Set<User> getAmigos() {
+		return amigos;
+	}
+
+	public void setAmigos(Set<User> amigos) {
+		this.amigos = amigos;
 	}
 
 }

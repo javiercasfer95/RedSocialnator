@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.uniovi.entities.PeticionAmistad;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.PeticionAmistadRepository;
+import com.uniovi.repositories.UsersRepository;
 
 @Service
 public class PeticionAmistadService {
@@ -15,6 +16,9 @@ public class PeticionAmistadService {
 	@Autowired
 	private PeticionAmistadRepository peticionAmistadRepository;
 	// OJO QUE ESTÁ HACIENDO UN FIND ALL
+
+	@Autowired
+	private UsersRepository userRepository;
 
 	public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable, User user) {
 		Page<PeticionAmistad> requests = peticionAmistadRepository.searchPeticionesFromUser(pageable, user);
@@ -25,6 +29,7 @@ public class PeticionAmistadService {
 
 	public Page<PeticionAmistad> getAllPeticionesToUser(Pageable pageable, User user) {
 		Page<PeticionAmistad> peticiones = peticionAmistadRepository.searchPeticionesToUser(pageable, user);
+
 		return peticiones;
 	}
 
@@ -46,6 +51,19 @@ public class PeticionAmistadService {
 			PeticionAmistad peticionNueva = new PeticionAmistad(origen, destino);
 			peticionAmistadRepository.save(peticionNueva);
 		}
+	}
+
+	public void aceptarPeticionAmistad(User origen, User destino) {
+		PeticionAmistad pet = peticionAmistadRepository.findByUsers(origen, destino);
+		pet.setAceptada(true);
+		peticionAmistadRepository.save(pet);
+		System.out.println("Aceptando solicitud de amistad");
+		System.out.println(pet.toString());
+		origen.getAmigos().add(destino);
+		destino.getAmigos().add(origen);
+		userRepository.save(origen);
+		userRepository.save(destino);
+		System.out.println(origen.getAmigos());
 	}
 
 }

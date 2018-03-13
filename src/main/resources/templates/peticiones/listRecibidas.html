@@ -29,7 +29,7 @@
 						<td th:text="${peticion.origen.lastName}">Apellidos del
 							usuario</td>
 						<td th:text="${peticion.origen.email}">ejemplo@correo.es</td>
-						<td><a th:id="'btn' + ${peticion.origen.email}" 
+						<td><a th:id="'btn' + ${peticion.origen.email}" th:href="'/peticion/aceptarPeticion?emailOrigen='+ ${peticion.origen.email}"
 							th:text="#{peticion.aceptar}" /></td>
 					</tr>
 				</tbody>

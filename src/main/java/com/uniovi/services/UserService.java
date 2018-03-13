@@ -25,7 +25,7 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Autowired
 	private DatosEjemplo datosEjemplo;
 
@@ -95,10 +95,17 @@ public class UserService {
 		users = usersRepository.searchByEmailAndName(pageable, searchText);
 		return users;
 	}
-	
-	//Reiniciar la base de datos SOLO VISIBLE Y ACCESIBLE POR ADMINISTRADOR REVISARRRRRRRRRRRRRRRRRRRRR
-	public void deleteAllUsers(){
+
+	// Reiniciar la base de datos SOLO VISIBLE Y ACCESIBLE POR ADMINISTRADOR
+	// REVISARRRRRRRRRRRRRRRRRRRRR
+	public void deleteAllUsers() {
 		usersRepository.deleteAll();
 		datosEjemplo.init();
+	}
+
+	public Page<User> getAllAmigos(Pageable pageable, User user) {
+		List<User> amigos = new ArrayList<User>(user.getAmigos());
+		Page<User> users = new PageImpl<User>(amigos);
+		return users;
 	}
 }
