@@ -5,7 +5,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-// @Table(name = "user")
+@Table(name = "user")
 public class User {
 
 	@Id
@@ -20,10 +20,10 @@ public class User {
 	@Transient
 	private String passwordConfirm;
 
-	@OneToMany(mappedBy = "origen", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "destino", cascade = CascadeType.ALL)
 	private Set<PeticionAmistad> peticionesRecibidas;
 
-	@OneToMany(mappedBy = "destino", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "origen", cascade = CascadeType.ALL)
 	private Set<PeticionAmistad> peticionesEnviadas;
 
 	public User(String email, String name, String lastName) {
@@ -147,6 +147,14 @@ public class User {
 
 	public Set<PeticionAmistad> getPeticionesEnviadas() {
 		return peticionesEnviadas;
+	}
+
+	public void setPeticionesEnviadas(Set<PeticionAmistad> peticionesEnviadas) {
+		this.peticionesEnviadas = peticionesEnviadas;
+	}
+
+	public void setPeticionesRecibidas(Set<PeticionAmistad> peticionesRecibidas) {
+		this.peticionesRecibidas = peticionesRecibidas;
 	}
 
 }

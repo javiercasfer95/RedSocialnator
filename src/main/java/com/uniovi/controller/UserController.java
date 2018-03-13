@@ -1,11 +1,9 @@
 package com.uniovi.controller;
 
 import java.security.Principal;
-import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uniovi.entities.User;
+import com.uniovi.repositories.PeticionAmistadRepository;
 import com.uniovi.services.RoleService;
 import com.uniovi.services.SecurityService;
 import com.uniovi.services.UserService;
-import com.uniovi.validator.LogInFormValidator;
 import com.uniovi.validator.SignUpFromValidator;
 
 @Controller
@@ -52,12 +50,15 @@ public class UserController {
 	@Autowired
 	private SignUpFromValidator signUpFormValidator;
 
-	@Autowired
-	private LogInFormValidator logInFormValidator;
+//	@Autowired
+//	private LogInFormValidator logInFormValidator;
 
 	@Autowired
 	SecurityService securityService;
 
+	@Autowired
+	PeticionAmistadRepository peticionAmistadRepository;
+	
 	@Autowired
 	RoleService roleService;
 
@@ -71,17 +72,18 @@ public class UserController {
 		Page<User> users = userService.getUsers(pageable);
 
 		if (searchText != null && !searchText.isEmpty()) {
+
 			users = userService.searchUserByEmailAndName(pageable, searchText);
 			model.addAttribute("usersList", users.getContent());
 			model.addAttribute("page", users);
 		} else {
+
 			model.addAttribute("usersList", users.getContent());
 			model.addAttribute("page", users);
 		}
 
 		return "user/list";
 	}
-	
 
 	/**
 	 * Es importante enviar obtener un user vacio de tipo get para que el validador
@@ -164,6 +166,13 @@ public class UserController {
 
 		model.addAttribute("page", users);
 		return "debug/list";
+	}
+
+	@RequestMapping(value = { "/deleteAllUsers" })
+	public String deleteAllUsers(Model model) {
+		//peticionAmistadRepository.deleteAll();
+		userService.deleteAllUsers();
+		return "redirect:home";
 	}
 
 }

@@ -9,7 +9,8 @@
 	<div class="container">
 		<h2>
 			<div class="container">
-				<p  th:text='#{welcome.message}' /> <p th:text='${user.name}' />
+				<p th:text='#{welcome.message}' />
+				<p th:text='${user.name}' />
 			</div>
 		</h2>
 		<h3 th:text='#{text.usuariosDisponibles}'>Usuarios</h3>
@@ -21,11 +22,11 @@
 			</div>
 			<button type="submit" class="btn btn-default">Buscar</button>
 		</form>
-<p id="demo"></p>
+		<p id="demo"></p>
 		<p>Los usuarios que actualmente figuran en el sistema son los
 			siguientes:</p>
 		<div class="table-responsive">
-			<table class="table table-hover">
+			<table class="table table-hover" id="tablaUsuarios">
 				<thead>
 					<tr>
 						<th th:text='#{email.field}'>Email</th>
@@ -43,7 +44,24 @@
 						<td th:text="${user.lastName}">Apellidos del usuario</td>
 						<td><a th:text='#{detalles.field}'
 							th:href="${' L' + user.email}">detalles</a></td>
-							<td> <button type="submit" class="btn btn-default" th:id="${user.name}" onclick="change(this.id)" th:text="'Agregar ' + ${user.name}"  ></button> </td>
+
+						<td><a th:id="'btn' + ${user.email}"
+							th:href="'/peticion/enviarPeticion?emailRecibe='+ ${user.email}"
+							th:text="'Agregar ' + ${user.name}" class="btn btn-primary" /> <!-- <button type="submit" class="btn btn-default"
+								th:id="'sendPeticion' + ${user.email}" onclick="change(this.id)"
+								th:text="'Agregar ' + ${user.name}"></button> <script
+								th:inline="javascript">
+  	  /*<![CDATA[*/
+	  $( "#sendPeticion[[${user.email}]]" ).click(function() {
+		  var numberPage = [[${param.page}]];
+		  var urlUpdate = '/peticion/enviarPeticion';
+		  if ( numberPage != null ){
+			  urlUpdate += "?page="+numberPage[0];
+		  }
+		   $("#tablaUsuarios").load(urlUpdate);
+	  });
+	  /*]]>*/
+  </script> --></td>
 					</tr>
 				</tbody>
 			</table>

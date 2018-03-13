@@ -12,37 +12,48 @@
 
 
 		<div class="collapse navbar-collapse" id="myNavbar">
-		
-		
-		<!-- IZQUIERDA -->
+
+
+			<!-- IZQUIERDA -->
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="/home">Home</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/user/list"
 					th:text="#{usuarios.field}"> <span
 						class="glyphicon glyphicon-user"></span>Usuarios
 				</a></li>
-				
-				<li sec:authorize="isAuthenticated()"><a href="/user/listRequests"
-					th:text="#{peticion.field}"> <span
-						class="glyphicon glyphicon-user"></span>Peticiones de amistad
-				</a></li>
-				
+
+				<li id="users-menu" class="dropdown"
+					sec:authorize="isAuthenticated()"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" th:texh="#{peticion.field}">Peticiones
+						amistad<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="/peticiones/listRecibidas"
+							th:texh="#{peticion.fieldRecibida}">Peticiones recibidas</a></li>
+						<li><a href="/peticiones/listEnviadas"
+							th:texh="#{peticion.fieldEnviada}">Peticiones enviadas</a></li>
+
+					</ul></li>
+
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
 					th:texh="#{gestion.user}"> Gestión de Usuarios <span
 						class="caret"></span>
 				</a>
+
+
 					<ul class="dropdown-menu">
 						<li><a href="/notFound" th:texh="#{agregar.user}">Agregar
 								usuario</a></li>
 						<li><a href="/debug/list" th:texh="#{listar.user}">Ver
 								Usuarios</a></li>
-								
+						<li><a href="/deleteAllUsers" th:texh="#{admin.restoreAll}">Restaurar BD</a></li>
+
 					</ul></li>
 			</ul>
-			
-			
+
+
 			<!-- DERECHA -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage"

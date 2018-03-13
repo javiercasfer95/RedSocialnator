@@ -8,13 +8,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-//@Table(name = "peticionAmistad")
+@Table(name = "peticionAmistad")
 public class PeticionAmistad {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	//Usuario que envia la peticion, no se utiliza para relacion
+	
 	@ManyToOne
 	@JoinColumn(name = "origen_id")
 	private User origen;

@@ -17,60 +17,44 @@ import com.uniovi.services.UserService;
 
 @Controller
 public class PeticionAmistadController {
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	PeticionAmistadService peticionAmistadService;
-	
-	@RequestMapping("/user/peticionesFromUserList")
-	public String getListadoPeticionesFrom(Pageable pageable, Principal principal, Model model,
-			@RequestParam(value = "", required = false) String searchText) {
 
-		//Comprobar que el usuario ha añadido al otro
-		
-		
-		String email = principal.getName();
-		User user = userService.getUserByEmail(email);
-		model.addAttribute("user", user);
-		Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesFromUser(pageable);
+	@RequestMapping("/peticiones/listRecibidas")
+	public String getListadoPeticionesTo(Pageable pageable, Model model, Principal princiapl) {
 
-		if (searchText != null && !searchText.isEmpty()) {
-			requests = peticionAmistadService.getAllPeticionesFromUser(pageable, user);
-			model.addAttribute("peticionesFromUserList", requests.getContent());
-			model.addAttribute("page", requests);
-		} else {
-			model.addAttribute("peticionesFromUserList", requests.getContent());
-			model.addAttribute("page", requests);
-		}
-
-		return "user/peticionesFromUserList";
+		String email = princiapl.getName();
+		User yo = userService.getUserByEmail(email);
+		Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesToUser(pageable, yo);
+		model.addAttribute("peticionList", requests.getContent());
+		model.addAttribute("page", requests);
+		return "/peticiones/listRecibidas";
 	}
-	
-	
-	@RequestMapping("/user/peticionesToUserList")
-	public String getListadoPeticionesTo(Pageable pageable, Principal principal, Model model,
-			@RequestParam(value = "", required = false) String searchText) {
 
-		//Comprobar que el usuario ha añadido al otro???
-		
-		
+	@RequestMapping("/peticiones/listEnviadas")
+	public String getListadoPeticionesFrom(Pageable pageable, Model model, Principal princiapl) {
+
+		String email = princiapl.getName();
+		User yo = userService.getUserByEmail(email);
+		Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesFromUser(pageable, yo);
+		model.addAttribute("peticionList", requests.getContent());
+		model.addAttribute("page", requests);
+		return "/peticiones/listEnviadas";
+	}
+
+	@RequestMapping("/peticion/enviarPeticion")
+	public String enviarPeticion(Pageable pageabe, Model model, Principal principal, @RequestParam String emailRecibe) {
+
+		// Para enviar peticiones me necesito a mi y necesito al que se la quiero enviar
 		String email = principal.getName();
-		User user = userService.getUserByEmail(email);
-		model.addAttribute("user", user);
-		Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesToUser(pageable);
-
-		if (searchText != null && !searchText.isEmpty()) {
-			requests = peticionAmistadService.getAllPeticionesToUser(pageable, user);
-			model.addAttribute("peticionesFromUserList", requests.getContent());
-			model.addAttribute("page", requests);
-		} else {
-			model.addAttribute("peticionesFromUserList", requests.getContent());
-			model.addAttribute("page", requests);
-		}
-
-		return "user/peticionesToUserList";
+		User yo = userService.getUserByEmail(email);
+		User otroTio = userService.getUserByEmail(emailRecibe);
+		peticionAmistadService.crearPeticionAmistad(yo, otroTio);
+		return "redirect:/user/list";
 	}
 
 }

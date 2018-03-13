@@ -25,6 +25,9 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	private DatosEjemplo datosEjemplo;
 
 	@PostConstruct
 	public void init() {
@@ -91,5 +94,11 @@ public class UserService {
 		// }
 		users = usersRepository.searchByEmailAndName(pageable, searchText);
 		return users;
+	}
+	
+	//Reiniciar la base de datos SOLO VISIBLE Y ACCESIBLE POR ADMINISTRADOR REVISARRRRRRRRRRRRRRRRRRRRR
+	public void deleteAllUsers(){
+		usersRepository.deleteAll();
+		datosEjemplo.init();
 	}
 }
