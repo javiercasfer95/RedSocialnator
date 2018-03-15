@@ -32,7 +32,7 @@ public class DatosEjemplo {
 
 	Set<User> usuariosAñadir;
 
-	//@PostConstruct
+	@PostConstruct
 	public void init() {
 
 		usuariosAñadir = new HashSet();
