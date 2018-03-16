@@ -18,7 +18,7 @@
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="/">Home</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/user/list"
-					th:text="#{usuarios.field}"> <span
+					th:text="#{usuarios.field}" id=""> <span
 						class="glyphicon glyphicon-user"></span>Usuarios
 				</a></li>
 				
@@ -30,7 +30,7 @@
 
 				<li id="users-menu" class="dropdown"
 					sec:authorize="isAuthenticated()"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" th:texh="#{peticion.field}">Peticiones
+					data-toggle="dropdown" href="#" th:text="#{peticion.field}">Peticiones
 						amistad<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
