@@ -31,9 +31,6 @@
 						<th>Role</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,15 +39,9 @@
 						<td th:text="${user.name}">Nombre del alumno</td>
 						<td th:text="${user.lastName}">Apellidos del alumno</td>
 						<td th:text="${user.role}">Role guapo</td>
-						<td><a th:href="${' L' + user.id}">detalles</a></td>
-						<td>
-							<button type="submit" class="btn btn-default"
-								th:id="${user.name}" onclick="change(this.id)"
-								th:text="'Agregar ' + ${user.name}"></button>
-						</td>
-
-						<td><a th:href="${'/user/edit/' + user.email}">modificar</a></td>
-						<td><a th:href="${'/user/delete/' + user.id}">eliminar</a></td>
+						<td><a
+							th:href="${'/debug/deleteUser?userBorraEmail=' + user.email}"
+							class="btn btn-danger">eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>

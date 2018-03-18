@@ -165,26 +165,5 @@ public class UserController {
 
 	// DEBUG
 
-	@RequestMapping(value = "/debug/list")
-	public String debugListUsers(Pageable pageable, Model model,
-			@RequestParam(value = "", required = false) String searchText) {
-		Page<User> users = userService.getUsers(pageable);
-		if (searchText != null && !searchText.isEmpty()) {
-			users = userService.searchUserByEmailAndName(pageable, searchText);
-			model.addAttribute("usersList", users.getContent());
-		} else {
-			model.addAttribute("usersList", users.getContent());
-		}
-
-		model.addAttribute("page", users);
-		return "debug/list";
-	}
-
-	@RequestMapping(value = { "/deleteAllUsers" })
-	public String deleteAllUsers(Model model) {
-		// peticionAmistadRepository.deleteAll();
-		userService.deleteAllUsers();
-		return "redirect:home";
-	}
 
 }

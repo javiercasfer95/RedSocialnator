@@ -21,17 +21,18 @@
 					th:text="#{usuarios.field}" id=""> <span
 						class="glyphicon glyphicon-user"></span>Usuarios
 				</a></li>
-				
-				<li sec:authorize="isAuthenticated()"><a href="/user/myFriends"
-					th:text="#{amigos.field}"> <span
+
+				<li sec:authorize="hasRole('ROLE_USER')"><a
+					href="/user/myFriends" th:text="#{amigos.field}"> <span
 						class="glyphicon glyphicon-user"></span>Friends
 				</a></li>
-				
+
 
 				<li id="users-menu" class="dropdown"
-					sec:authorize="isAuthenticated()"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" th:text="#{peticion.field}">Peticiones
-						amistad<span class="caret"></span>
+					sec:authorize="hasRole('ROLE_USER')"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#"
+					th:text="#{peticion.field}">Peticiones amistad<span
+						class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" id="peticionesDropdown">
 						<li><a href="/peticiones/listRecibidas"
@@ -50,11 +51,10 @@
 
 
 					<ul class="dropdown-menu">
-						<li><a href="/notFound" th:texh="#{agregar.user}">Agregar
-								usuario</a></li>
 						<li><a href="/debug/list" th:texh="#{listar.user}">Ver
 								Usuarios</a></li>
-						<li><a href="/deleteAllUsers" th:texh="#{admin.restoreAll}">Restaurar BD</a></li>
+						<li><a href="/deleteAllUsers" th:texh="#{admin.restoreAll}">Restaurar
+								BD</a></li>
 
 					</ul></li>
 			</ul>
@@ -72,12 +72,12 @@
 						<li><a id="btnEnglish" value="EN"> <img
 								th:src="@{/img/if_uk_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.en}">Inglés</span>
+								th:text="#{language.en}">InglÃ©s</span>
 						</a></li>
 						<li><a id="btnSpanish" value="ES"> <img
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.es}">Español</span>
+								th:text="#{language.es}">EspaÃ±ol</span>
 						</a></li>
 					</ul></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/signup"
@@ -86,7 +86,7 @@
 				</a></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/login"
 					th:text="#{login.message}" th:text='#{iniciar.sesion}'> <!-- <span
-						class="glyphicon glyphicon-log-in" th:text='#{iniciar.sesion}'></span>Identifícate -->
+						class="glyphicon glyphicon-log-in" th:text='#{iniciar.sesion}'></span>IdentifÃ­cate -->
 				</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/logout"
 					th:text='#{cerrar.sesion}'> <!-- <span
@@ -102,11 +102,11 @@
 				<li><a href="/home">Home</a></li>
 				<li id="marks-menu" class="dropdown"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
-					th:texh="#{gestion.nota}"> GestiÃ³n de notas <span class="caret"></span>
+					th:texh="#{gestion.nota}"> GestiÃƒÂ³n de notas <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
 
-						P Ã¡ g i n a 20 | 41 Sistemas Distribuidos e Internet  PRACTICA 3
+						P ÃƒÂ¡ g i n a 20 | 41 Sistemas Distribuidos e Internet  PRACTICA 3
 
 							aqui lo mismo, solo se muestra si es profesor
 
@@ -117,7 +117,7 @@
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
-					th:texh="#{gestion.user}"> GestiÃ³n de Usuarios <span
+					th:texh="#{gestion.user}"> GestiÃƒÂ³n de Usuarios <span
 						class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
@@ -138,12 +138,12 @@
 						<li><a id="btnEnglish" value="EN"> <img
 								th:src="@{/img/if_uk_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.en}">InglÃ©s</span>
+								th:text="#{language.en}">InglÃƒÂ©s</span>
 						</a></li>
 						<li><a id="btnSpanish" value="ES"> <img
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.es}">EspaÃ±ol</span>
+								th:text="#{language.es}">EspaÃƒÂ±ol</span>
 						</a></li>
 					</ul></li>
 				IMPORTANTE TENER ESTO EN CUENTA
@@ -153,7 +153,7 @@
 				</a></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/login"
 					th:text="#{login.message}"> <span
-						class="glyphicon glyphicon-log-in"></span> IdentifÃ­cate
+						class="glyphicon glyphicon-log-in"></span> IdentifÃƒÂ­cate
 				</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
 						class="glyphicon glyphicon-log-out"></span> Desconectar

@@ -3,7 +3,7 @@
 <head th:replace="fragments/head" />
 <body>
 
-	<!-- Barra de Navegaci�n superior -->
+	<!-- Barra de Navegaciï¿½n superior -->
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
@@ -34,7 +34,6 @@
 						<th th:text='#{apellidos.field}'>Apellidos</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,8 +41,6 @@
 						<td th:text="${user.email}">ejemplo@correo.es</td>
 						<td th:text="${user.name}">Nombre del usuario</td>
 						<td th:text="${user.lastName}">Apellidos del usuario</td>
-						<td><a th:text='#{detalles.field}'
-							th:href="${' L' + user.email}">detalles</a></td>
 
 				<!--  OJO AQUI  && existePeticion == false -->		<td th:if="${user.role == 'ROLE_USER'}"><a 
 							th:id="'btn' + ${user.email}"

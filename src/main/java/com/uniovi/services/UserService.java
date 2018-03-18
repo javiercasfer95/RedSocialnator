@@ -108,4 +108,14 @@ public class UserService {
 		Page<User> users = new PageImpl<User>(amigos);
 		return users;
 	}
+
+	public void deleteUser(User user) {
+		Set<User> amigos = user.getAmigos();
+		if (!amigos.isEmpty())
+			for (User colega : amigos) {
+				colega.getAmigos().remove(user);
+				amigos.remove(colega);
+			}
+		usersRepository.delete(user);
+	}
 }
