@@ -17,13 +17,13 @@
 
 		<form class="navbar-form" action="/user/list">
 			<div class="form-group">
-				<input name="searchText" type="text" class="form-control" size="50"
+				<input id="search" name="searchText" type="text" class="form-control" size="50"
 					placeholder="Buscar por Email o nombre del alumno">
 			</div>
-			<button type="submit" class="btn btn-default">Buscar</button>
+			<button type="submit" class="btn btn-default" id="searchButton">Buscar</button>
 		</form>
 		<p id="demo"></p>
-		<p th:text="#{uruariosSistema.field}">Los usuarios que actualmente
+		<p th:text="#{usuariosSistema.field}">Los usuarios que actualmente
 			figuran en el sistema son los siguientes:</p>
 		<div class="table-responsive">
 			<table class="table table-hover" id="tablaUsuarios">
@@ -45,7 +45,7 @@
 						<td><a th:text='#{detalles.field}'
 							th:href="${' L' + user.email}">detalles</a></td>
 
-						<td th:if="${user.role == 'ROLE_USER'}"><a
+				<!--  OJO AQUI  && existePeticion == false -->		<td th:if="${user.role == 'ROLE_USER'}"><a 
 							th:id="'btn' + ${user.email}"
 							th:href="'/peticion/enviarPeticion?emailRecibe='+ ${user.email}"
 							th:text="'Agregar ' + ${user.name}" class="btn btn-primary" /></td>

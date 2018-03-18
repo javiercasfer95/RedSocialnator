@@ -65,5 +65,12 @@ public class PeticionAmistadService {
 		userRepository.save(destino);
 		System.out.println(origen.getAmigos());
 	}
+	
+	public boolean existePeticion(User origen, User destino) {
+		if(peticionAmistadRepository.numeroPeticionesEntreDosUsuarios(origen, destino) > 0) {
+			return true;
+		}
+		return false;
+	}
 
 }

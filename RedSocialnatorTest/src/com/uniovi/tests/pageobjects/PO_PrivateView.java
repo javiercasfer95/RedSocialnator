@@ -11,7 +11,7 @@ public class PO_PrivateView extends PO_NavView {
 	static public void fillFormAddMark(WebDriver driver, int userOrder, String descriptionp, String scorep) {
 		// Esperamos 5 segundo a que carge el DOM porque en algunos equipos falla
 		SeleniumUtils.esperarSegundos(driver, 5);
-		// Seleccionamos el alumnos userOrder
+		// Seleccionamos el alumno userOrder
 		new Select(driver.findElement(By.id("user"))).selectByIndex(userOrder);
 		// Rellenemos el campo de descripción
 		WebElement description = driver.findElement(By.name("description"));
@@ -24,4 +24,20 @@ public class PO_PrivateView extends PO_NavView {
 		By boton = By.className("btn");
 		driver.findElement(boton).click();
 	}
+
+	public static void searchUser(WebDriver driver, String userName) {
+		SeleniumUtils.esperarSegundos(driver, 5);
+		WebElement search = driver.findElement(By.name("search"));
+		search.click();
+		search.clear();
+		search.sendKeys(userName);
+		
+		// Pulsar el boton de buscar
+		By boton = By.id("searchButton");		
+		driver.findElement(boton).click();
+	}
+	
+	
+	
+
 }

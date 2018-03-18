@@ -51,4 +51,9 @@ public class PO_View {
 		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, type, text, getTimeout());
 		return elementos;		
 	}
+	
+	static public List<WebElement> checkElementLocale(WebDriver driver, String type, String text) {
+		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, type, p.getString(text, 0), getTimeout());
+		return elementos;		
+	}
 }
