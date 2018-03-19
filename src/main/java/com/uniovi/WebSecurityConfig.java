@@ -50,7 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll().antMatchers("/debug/**").hasAuthority("ROLE_ADMIN")
 				.antMatchers("user/**", "peticiones/**").hasAuthority("ROLE_USER")
 				.and().formLogin().loginPage("/login").failureUrl("/login?error=1")
-				.defaultSuccessUrl("/home").and().logout().permitAll();
+				.defaultSuccessUrl("/home").and().logout().permitAll().and().
+				exceptionHandling().accessDeniedPage("/accesoDenegado");
 		
 		// http.csrf().disable().authorizeRequests()
 		// .antMatchers("/css/**", "/img/**", "/script/**", "/", "/signup",

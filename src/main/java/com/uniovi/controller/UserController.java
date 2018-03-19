@@ -1,6 +1,7 @@
 package com.uniovi.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -70,17 +71,21 @@ public class UserController {
 		User user = userService.getUserByEmail(email);
 		model.addAttribute("user", user);
 		Page<User> users = userService.getUsers(pageable);
+		List<String> emailUsuarioConRelaciones = userService.getUsuariosConRelaciones(user);
 
 		if (searchText != null && !searchText.isEmpty()) {
 
 			users = userService.searchUserByEmailAndName(pageable, searchText);
 			model.addAttribute("usersList", users.getContent());
 			model.addAttribute("page", users);
+
 		} else {
 
 			model.addAttribute("usersList", users.getContent());
 			model.addAttribute("page", users);
 		}
+
+		model.addAttribute("usuariosConRelaciones", emailUsuarioConRelaciones);
 
 		return "user/list";
 	}
@@ -90,7 +95,7 @@ public class UserController {
 
 		String email = principal.getName();
 		User user = userService.getUserByEmail(email);
-//		model.addAttribute("user", user);
+		// model.addAttribute("user", user);
 		Page<User> users = userService.getAllAmigos(pageable, user);
 		model.addAttribute("amigosList", users.getContent());
 		model.addAttribute("page", users);
@@ -127,7 +132,7 @@ public class UserController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, @RequestParam(value = "error", required = false) Long error) {
-		if(error != null)
+		if (error != null)
 			model.addAttribute("error", error);
 		return "login";
 	}
@@ -166,6 +171,5 @@ public class UserController {
 	// }
 
 	// DEBUG
-
 
 }

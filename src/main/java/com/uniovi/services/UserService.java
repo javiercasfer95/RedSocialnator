@@ -3,6 +3,7 @@ package com.uniovi.services;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.uniovi.entities.PeticionAmistad;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.UsersRepository;
 
@@ -91,6 +93,33 @@ public class UserService {
 		List<User> amigos = new ArrayList<User>(user.getAmigos());
 		Page<User> users = new PageImpl<User>(amigos);
 		return users;
+	}
+
+	/**
+	 * Método que pretende buscar email usuarios con cualquier tipo de relacion
+	 * (peticiones/amistad) con un usuario que se pasa como praámetro
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public List<String> getUsuariosConRelaciones(User user) {
+		List<String> listado = new ArrayList<String>();
+		Set<User> colegas = user.getAmigos();
+		Set<PeticionAmistad> peticionesEnviadas = user.getPeticionesEnviadas();
+		Set<PeticionAmistad> peticionesRecibidas = user.getPeticionesRecibidas();
+		for (User u : colegas) {
+			if (!listado.contains(u.getEmail()))
+				listado.add(u.getEmail());
+		}
+		for (PeticionAmistad p : peticionesEnviadas) {
+			if (!listado.contains(p.getDestino().getEmail()))
+				listado.add(p.getDestino().getEmail());
+		}
+		for (PeticionAmistad p : peticionesRecibidas) {
+			if (!listado.contains(p.getOrigen().getEmail()))
+				listado.add(p.getOrigen().getEmail());
+		}
+		return listado;
 	}
 
 }

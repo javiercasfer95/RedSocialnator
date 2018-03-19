@@ -36,16 +36,16 @@
 				</a>
 					<ul class="dropdown-menu" id="peticionesDropdown">
 						<li><a href="/peticiones/listRecibidas"
-							th:texh="#{peticion.fieldRecibida}">Peticiones recibidas</a></li>
+							th:text="#{peticion.fieldRecibida}">Peticiones recibidas NT</a></li>
 						<li><a href="/peticiones/listEnviadas"
-							th:texh="#{peticion.fieldEnviada}">Peticiones enviadas</a></li>
+							th:text="#{peticion.fieldEnviadas}">Peticiones enviadas NT</a></li>
 
 					</ul></li>
 
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
-					th:texh="#{gestion.user}"> Gestión de Usuarios <span
+					th:text='#{gestion.user}'> Gestión de Usuarios <span
 						class="caret"></span>
 				</a>
 

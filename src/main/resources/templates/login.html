@@ -5,9 +5,11 @@
 
 	<nav th:replace="fragments/nav" />
 
-<div id="errorLogin" class="alert alert-warning" th:if="${error} == 1">
-  <strong th:text="#{error.field}">Warning!</strong> <p th:text="#{error.login}">Indicates a warning that might need attention.</p>
-</div>
+	<div id="errorLogin" class="alert alert-warning" th:if="${error} != null">
+		<strong th:text="#{error.field}">Warning!</strong>
+		<p th:text="#{error.login}">Indicates a warning that might need
+			attention.</p>
+	</div>
 	<div class="container">
 		<h2 th:text='#{login.message}'>Indentifícate</h2>
 		<form class="form-horizontal" method="post" action="/login"
@@ -19,7 +21,7 @@
 					th:text='#{email.field}'>Email:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="username"
-						placeholder="nombre de usuario" required="true" />
+						th:placeholder='#{email.field}' required="true" />
 				</div>
 			</div>
 
@@ -29,7 +31,7 @@
 					th:text='#{contraseña.field}'>Password:</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" name="password"
-						placeholder="ContraseÃ±a" required="true" />
+						th:placeholder='#{contraseña.field}' required="true" />
 				</div>
 			</div>
 

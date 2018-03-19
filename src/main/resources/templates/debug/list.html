@@ -39,7 +39,7 @@
 						<td th:text="${user.name}">Nombre del alumno</td>
 						<td th:text="${user.lastName}">Apellidos del alumno</td>
 						<td th:text="${user.role}">Role guapo</td>
-						<td><a
+						<td th:if="${user.role == 'ROLE_USER'}"><a
 							th:href="${'/debug/deleteUser?userBorraEmail=' + user.email}"
 							class="btn btn-danger">eliminar</a></td>
 					</tr>
