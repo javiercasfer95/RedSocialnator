@@ -5,6 +5,9 @@
 
 	<nav th:replace="fragments/nav" />
 
+<div id="errorLogin" class="alert alert-warning" th:if="${error} == 1">
+  <strong th:text="#{error.field}">Warning!</strong> <p th:text="#{error.login}">Indicates a warning that might need attention.</p>
+</div>
 	<div class="container">
 		<h2 th:text='#{login.message}'>Indentifícate</h2>
 		<form class="form-horizontal" method="post" action="/login"
