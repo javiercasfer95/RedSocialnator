@@ -32,7 +32,7 @@ public class DatosEjemplo {
 
 	Set<User> usuariosAñadir;
 
-	//@PostConstruct
+	// @PostConstruct
 	public void init() {
 
 		usuariosAñadir = new HashSet();
@@ -139,6 +139,38 @@ public class DatosEjemplo {
 
 		// usersService.addUser(user6);
 
+	}
+
+	@PostConstruct
+	public void genereteDefaultUsers() {
+		usuariosAñadir = new HashSet();
+		System.out.println("-------------------Se van a cargar usuarios por defecto------------------------");
+		User user1 = new User("javier@correo.es", "Javier", "Castro");
+		user1.setPassword("123456");
+		user1.setRole(rolesService.getRoles()[0]);
+
+		User user2 = new User("joni@correo.es", "Joni", "Valles");
+		user2.setPassword("123456");
+		user2.setRole(rolesService.getRoles()[0]);
+
+		User user3 = new User("admin@correo.es", "Admin", "admin");
+		user3.setPassword("123456");
+		user3.setRole(rolesService.getRoles()[1]); // Este va a ser admin
+
+		usuariosAñadir.add(user1);
+		usuariosAñadir.add(user2);
+		usuariosAñadir.add(user3);
+		
+		for(int i = 0; i < nombres.length -1; i++) {
+			User rand = new User(nombres[i] + apellidos[i] + "@default.es", nombres[i], apellidos[i]);
+			rand.setRole(rolesService.getDefaultRole());
+			rand.setPassword("123456");
+			usuariosAñadir.add(rand);
+		}
+		
+		for(User u : usuariosAñadir) {
+			usersService.addUser(u);
+		}
 	}
 
 	private User createRandomUser() {

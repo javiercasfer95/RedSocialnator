@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: RedSocialnator
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Javier Castro
+Built-By: javit
 Implementation-Vendor-Id: com.uniovi
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_161
 Implementation-URL: http://projects.spring.io/spring-boot/RedSocialnat
  or/
 Created-By: Maven Integration for Eclipse

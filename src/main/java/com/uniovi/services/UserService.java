@@ -1,5 +1,9 @@
 package com.uniovi.services;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +12,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
 
 import com.uniovi.entities.User;
 import com.uniovi.repositories.UsersRepository;
@@ -21,13 +23,7 @@ public class UserService {
 	private UsersRepository usersRepository;
 
 	@Autowired
-	private RoleService roleService;
-
-	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	@Autowired
-	private DatosEjemplo datosEjemplo;
 
 	@PostConstruct
 	public void init() {
@@ -35,8 +31,9 @@ public class UserService {
 
 	public Page<User> getUsers(Pageable pageable) {
 		// List<User> users = new ArrayList<User>();
-		Page<User> users = usersRepository.findAll(pageable);
+		// Page<User> users = usersRepository.findAll(pageable);
 		// usersRepository.findAll().forEach(users::add);
+		Page<User> users = usersRepository.findAllUsers(pageable);
 		return users;
 	}
 
@@ -86,21 +83,8 @@ public class UserService {
 	public Page<User> searchUserByEmailAndName(Pageable pageable, String searchText) {
 		Page<User> users = new PageImpl<User>(new LinkedList());
 		searchText = "%" + searchText + "%";
-		// if (user.getRole().equals("ROLE_STUDENT")) {
-		// marks = marksRepository.searchByDescriptionNameAndUser(searchText, user);
-		// }
-		// if (user.getRole().equals("ROLE_PROFESSOR")) {
-		// marks = marksRepository.searchByDescriptionAndName(searchText);
-		// }
 		users = usersRepository.searchByEmailAndName(pageable, searchText);
 		return users;
-	}
-
-	// Reiniciar la base de datos SOLO VISIBLE Y ACCESIBLE POR ADMINISTRADOR
-	// REVISARRRRRRRRRRRRRRRRRRRRR
-	public void deleteAllUsers() {
-		usersRepository.deleteAll();
-		datosEjemplo.init();
 	}
 
 	public Page<User> getAllAmigos(Pageable pageable, User user) {
@@ -109,13 +93,4 @@ public class UserService {
 		return users;
 	}
 
-	public void deleteUser(User user) {
-		Set<User> amigos = user.getAmigos();
-		if (!amigos.isEmpty())
-			for (User colega : amigos) {
-				colega.getAmigos().remove(user);
-				amigos.remove(colega);
-			}
-		usersRepository.delete(user);
-	}
 }

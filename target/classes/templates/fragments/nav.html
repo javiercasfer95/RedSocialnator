@@ -51,10 +51,12 @@
 
 
 					<ul class="dropdown-menu">
-						<li><a href="/debug/list" th:texh="#{listar.user}">Ver
+						<li><a id="adminListUsers" href="/debug/list" th:texh="#{listar.user}">Ver
 								Usuarios</a></li>
-						<li><a href="/deleteAllUsers" th:texh="#{admin.restoreAll}">Restaurar
-								BD</a></li>
+						<li><a id="restoreDBRandom" href="/debug/deleteAllUsers"
+							th:texh="#{admin.restoreAll}">Restaurar BD Random</a></li>
+						<li><a id="restoreDBDefault" href="/debug/generateDefault"
+							th:texh="#{admin.generateDefault}">Restaurar BD defecto</a></li>
 
 					</ul></li>
 			</ul>

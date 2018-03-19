@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uniovi.entities.User;
+import com.uniovi.services.AdminService;
 import com.uniovi.services.UserService;
 
 @Controller
 public class AdminController {
 
+	@Autowired
+	AdminService adminService;
+	
 	@Autowired
 	UserService userService;
 
@@ -32,10 +36,10 @@ public class AdminController {
 		return "debug/list";
 	}
 
-	@RequestMapping(value = { "/deleteAllUsers" })
+	@RequestMapping(value = { "/debug/deleteAllUsers" })
 	public String deleteAllUsers(Model model) {
-		userService.deleteAllUsers();
-		return "redirect:home";
+		adminService.deleteAllUsers();
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/debug/deleteUser")
@@ -44,9 +48,15 @@ public class AdminController {
 		if (userborrar == null) {
 			return "redirect:/debug/list";
 		} else {
-			userService.deleteUser(userborrar);
+			adminService.deleteUser(userborrar);
 			return "redirect:/debug/list";
 		}
+	}
+	
+	@RequestMapping(value = "/debug/generateDefault")
+	public String generateDefault(Pageable pageable, Model model) {
+		adminService.getDefaultUsers();
+		return "redirect:/home";
 	}
 
 }
