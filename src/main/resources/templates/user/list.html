@@ -9,8 +9,7 @@
 	<div class="container">
 		<h2>
 			<div class="container">
-				<p th:text='#{welcome.message}' />
-				<p th:text='${user.name}' />
+				<p  id="bienvenidaUser" th:text="#{welcome.message} + ' ' +${user.name}" />
 			</div>
 		</h2>
 		<h3 id="usuariosTitle" th:text='#{text.usuariosDisponibles}'>Usuarios</h3>
