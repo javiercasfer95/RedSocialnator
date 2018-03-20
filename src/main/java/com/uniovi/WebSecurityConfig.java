@@ -49,28 +49,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/img/**", "/script/**", "/", "/signup", "/login")
 				.permitAll().antMatchers("/debug/**").hasAuthority("ROLE_ADMIN")
 				.antMatchers("user/**", "peticiones/**").hasAuthority("ROLE_USER")
+				.anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").failureUrl("/login?error=1")
 				.defaultSuccessUrl("/home").and().logout().permitAll().and().
-				exceptionHandling().accessDeniedPage("/accesoDenegado");
-		
-		// http.csrf().disable().authorizeRequests()
-		// .antMatchers("/css/**", "/img/**", "/script/**", "/", "/signup",
-		// "/login/**").permitAll()
-		// .antMatchers("/mark/add").hasAuthority("ROLE_PROFESSOR").antMatchers("/mark/edit/*")
-		// .hasAuthority("ROLE_PROFESSOR").antMatchers("/mark/delete/*").hasAuthority("-ROLE_PROFESSOR")
-		// .antMatchers("/mark/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR",
-		// "ROLE_ADMIN").anyRequest()
-		// .authenticated().and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/home").and()
-		// .logout().permitAll();
-		// ;
-		// http.csrf().disable().authorizeRequests()
-		// .antMatchers("/css/**", "/img/**", "/script/**", "/", "/signup",
-		// "/login/**").permitAll()
-		// .antMatchers("/mark/add").hasAuthority("ROLE_PROFESSOR").antMatchers("/mark/edit/*")
-		// .hasAuthority("ROLE_PROFESSOR").antMatchers("/mark/delete/*").hasAuthority("ROLE_PROFESSOR")
-		// .antMatchers("/mark/**").hasAnyAuthority("ROLE_STUDENT", "ROLE_PROFESSOR",
-		// "ROLE_ADMIN")
-		// .antMatchers("/user/**").hasAnyAuthority("ROLE_ADMIN").anyRequest().authenticated();
+				exceptionHandling().accessDeniedPage("/accesoDenegado")
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+				;
 	}
 
 	@Autowired

@@ -20,13 +20,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="peticion : ${peticionList}">
+					<tr th:id="'filaDe' +  ${peticion.destino.email}"
+						th:each="peticion : ${peticionList}">
 
 						<td th:text="${peticion.destino.name}">Nombre del usuario</td>
 						<td th:text="${peticion.destino.lastName}">Apellidos del
 							usuario</td>
 						<td th:text="${peticion.destino.email}">ejemplo@correo.es</td>
-						
+
 					</tr>
 				</tbody>
 			</table>

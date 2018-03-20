@@ -23,13 +23,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="peticion : ${peticionList}">
+					<tr th:id="'filaDe' +  ${peticion.origen.email}" th:each="peticion : ${peticionList}">
 
 						<td th:text="${peticion.origen.name}">Nombre del usuario</td>
 						<td th:text="${peticion.origen.lastName}">Apellidos del
 							usuario</td>
 						<td th:text="${peticion.origen.email}">ejemplo@correo.es</td>
-						<td><a th:id="'btn' + ${peticion.origen.email}" th:href="'/peticion/aceptarPeticion?emailOrigen='+ ${peticion.origen.email}"
+						<td><a class="btn btn-success"
+							th:id="'btn' + ${peticion.origen.email}"
+							th:href="'/peticion/aceptarPeticion?emailOrigen='+ ${peticion.origen.email}"
 							th:text="#{peticion.aceptar}" /></td>
 					</tr>
 				</tbody>

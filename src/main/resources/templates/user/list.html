@@ -23,7 +23,7 @@
 			<button type="submit" class="btn btn-default" id="searchButton">Buscar</button>
 		</form>
 		<p id="demo"></p>
-		<p th:text="#{usuariosSistema.field}">Los usuarios que actualmente
+		<p th:text="#{usuariosSistema.field}" id="parrafoUsuariosSistema">Los usuarios que actualmente
 			figuran en el sistema son los siguientes:</p>
 		<div class="table-responsive">
 			<table class="table table-hover" id="tablaUsuarios">
@@ -37,7 +37,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="user : ${usersList}">
+					<tr th:id="'filaDe' + ${user.email}" th:each="user : ${usersList}">
 						<td th:text="${user.email}">ejemplo@correo.es</td>
 						<td th:text="${user.name}">Nombre del usuario</td>
 						<td th:text="${user.lastName}">Apellidos del usuario</td>

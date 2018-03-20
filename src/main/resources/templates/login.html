@@ -11,7 +11,9 @@
 			attention.</p>
 	</div>
 	<div class="container">
-		<h2 th:text='#{login.message}'>Indentifícate</h2>
+		<h2 id="identificateField" th:text='#{login.message}'>Indentifícate</h2>
+		
+		
 		<form class="form-horizontal" method="post" action="/login"
 			th:object="${user}">
 
