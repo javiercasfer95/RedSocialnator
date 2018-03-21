@@ -24,6 +24,9 @@ public class PeticionAmistadService {
 	@Autowired
 	private UsersRepository userRepository;
 
+	@Autowired
+	private RoleService roleService;
+
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable, User user) {
@@ -46,8 +49,14 @@ public class PeticionAmistadService {
 
 	public void crearPeticionAmistad(User origen, User destino) {
 		if (origen.getEmail().equals(destino.getEmail())) {
-			log.debug("Se ha intentado crear una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
-					+ ". Fecha: " + Calendar.getInstance().getTime());
+			log.debug("Se ha intentado crear una peticion de amistad entre " + origen.getEmail() + " y "
+					+ destino.getEmail() + ". Fecha: " + Calendar.getInstance().getTime());
+			return;
+		}
+
+		if (origen.getRole().equals(roleService.getAdminRole()) || destino.getRole().equals(roleService.adminRole)) {
+			log.debug("Se ha intentado crear una peticion de amistad entre algun admin y no, no queremos eso. Fecha: "
+					+ Calendar.getInstance().getTime());
 			return;
 		}
 		/*
@@ -65,11 +74,17 @@ public class PeticionAmistadService {
 
 	public void aceptarPeticionAmistad(User origen, User destino) {
 		if (origen.getEmail().equals(destino.getEmail())) {
-			log.debug("Se ha intentado aceptar una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
-					+ ". Fecha: " + Calendar.getInstance().getTime());
+			log.debug("Se ha intentado aceptar una peticion de amistad entre " + origen.getEmail() + " y "
+					+ destino.getEmail() + ". Fecha: " + Calendar.getInstance().getTime());
 			return;
 		}
-		
+
+		if (origen.getRole().equals(roleService.getAdminRole()) || destino.getRole().equals(roleService.adminRole)) {
+			log.debug("Se ha intentado acpetar una peticion de amistad entre algun admin y no, no queremos eso. Fecha: "
+					+ Calendar.getInstance().getTime());
+			return;
+		}
+
 		PeticionAmistad pet = peticionAmistadRepository.findByUsers(origen, destino);
 		pet.setAceptada(true);
 		peticionAmistadRepository.save(pet);

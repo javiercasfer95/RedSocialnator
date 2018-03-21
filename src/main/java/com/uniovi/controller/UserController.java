@@ -69,7 +69,7 @@ public class UserController {
 
 		String email = principal.getName();
 		User user = userService.getUserByEmail(email);
-		if (user.getRole().equals("ROLE_ADMIN")) {
+		if (user.getRole().equals(roleService.getAdminRole())) {
 			return "redirect:/debug/list";
 		}
 		model.addAttribute("user", user);
