@@ -69,6 +69,9 @@ public class UserController {
 
 		String email = principal.getName();
 		User user = userService.getUserByEmail(email);
+		if (user.getRole().equals("ROLE_ADMIN")) {
+			return "redirect:/debug/list";
+		}
 		model.addAttribute("user", user);
 		Page<User> users = userService.getUsers(pageable);
 		List<String> emailUsuarioConRelaciones = userService.getUsuariosConRelaciones(user);

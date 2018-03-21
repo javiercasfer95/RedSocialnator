@@ -45,7 +45,11 @@ public class PeticionAmistadService {
 	}
 
 	public void crearPeticionAmistad(User origen, User destino) {
-
+		if (origen.getEmail().equals(destino.getEmail())) {
+			log.debug("Se ha intentado crear una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
+					+ ". Fecha: " + Calendar.getInstance().getTime());
+			return;
+		}
 		/*
 		 * No queremos añadir mas de una peticion de amistad entre dos usuarios
 		 */
@@ -60,6 +64,12 @@ public class PeticionAmistadService {
 	}
 
 	public void aceptarPeticionAmistad(User origen, User destino) {
+		if (origen.getEmail().equals(destino.getEmail())) {
+			log.debug("Se ha intentado aceptar una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
+					+ ". Fecha: " + Calendar.getInstance().getTime());
+			return;
+		}
+		
 		PeticionAmistad pet = peticionAmistadRepository.findByUsers(origen, destino);
 		pet.setAceptada(true);
 		peticionAmistadRepository.save(pet);
