@@ -7,39 +7,39 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2>Usuarios disponibles. ADMIN</h2>
+		<h2 th:text="#{usuarios.field} + ' ' + 'ADMIN'" id="tituloPagAdmin">Usuarios disponibles. ADMIN</h2>
 
 		<form class="navbar-form" action="/debug/list">
 			<div class="form-group">
 				<input name="searchText" type="text" class="form-control" size="50"
-					placeholder="Buscar por Email o nombre del alumno">
+					th:placeholder="#{placeholder.buscarUsuario}" id="search">
 			</div>
-			<button type="submit" class="btn btn-default">Buscar</button>
+			<button type="submit" class="btn btn-default" id="searchButton">Buscar</button>
 		</form>
-		<!-- DEBUG -->
-		<p id="demo"></p>
-		<!-- DEBUG -->
-		<p>Los usuarios que actualmente figuran en el sistema son los
-			siguientes:</p>
+
+
+		<p th:text="#{usuariosSistema.field}">Los usuarios que actualmente
+			figuran en el sistema son los siguientes:</p>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Email</th>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Role</th>
+						<th th:text='#{email.field}'>Email</th>
+						<th th:text='#{nombre.field}'>Nombre</th>
+						<th th:text='#{apellidos.field}'>Apellidos</th>
+						<th th:text='#{role.field}'>Role</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="user : ${usersList}">
+					<tr th:id="'filaDe' + ${user.email}" th:each="user : ${usersList}">
 						<td th:text="${user.email}">71888888X</td>
 						<td th:text="${user.name}">Nombre del alumno</td>
 						<td th:text="${user.lastName}">Apellidos del alumno</td>
 						<td th:text="${user.role}">Role guapo</td>
 						<td th:if="${user.role == 'ROLE_USER'}"><a
+							th:id="'borrar' + ${user.email}"
 							th:href="${'/debug/deleteUser?userBorraEmail=' + user.email}"
 							class="btn btn-danger">eliminar</a></td>
 					</tr>

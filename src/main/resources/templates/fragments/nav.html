@@ -22,7 +22,7 @@
 						class="glyphicon glyphicon-user"></span>Usuarios
 				</a></li>
 
-				<li sec:authorize="hasRole('ROLE_USER')"><a
+				<li sec:authorize="hasRole('ROLE_USER')"><a id="amigos"
 					href="/user/myFriends" th:text="#{amigos.field}"> <span
 						class="glyphicon glyphicon-user"></span>Friends
 				</a></li>

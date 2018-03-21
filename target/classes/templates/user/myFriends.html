@@ -26,17 +26,17 @@
 						<th th:text='#{nombre.field}'>Nombre</th>
 						<th th:text='#{apellidos.field}'>Apellidos</th>
 <!-- 						<th class="col-md-1"></th> -->
-						<th class="col-md-1"></th> 
+					<!-- 	<th class="col-md-1"></th>  -->
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="user : ${amigosList}">
+					<tr th:id="'filaDe' + ${user.email}" th:each="user : ${amigosList}">
 						<td th:text="${user.email}">ejemplo@correo.es</td>
 						<td th:text="${user.name}">Nombre del usuario</td>
 						<td th:text="${user.lastName}">Apellidos del usuario</td>
 						<!-- <td><a th:text='#{detalles.field}'
 							th:href="${' L' + user.email}">detalles</a></td> -->
-						<td><a href="/notFound">eliminar</a></td>
+						<!-- <td><a href="/notFound">eliminar</a></td> -->
 					</tr>
 				</tbody>
 			</table>
