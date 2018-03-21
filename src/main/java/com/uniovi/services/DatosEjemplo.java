@@ -1,5 +1,6 @@
 package com.uniovi.services;
 
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -7,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,8 @@ public class DatosEjemplo {
 
 	@Autowired
 	private RoleService rolesService;
+
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	String[] nombres = { "Juan", "Pepita", "Mario", "Link", "Zelda", "Pikachu", "Ash", "Samus", "Snoop" };
 
@@ -55,7 +60,7 @@ public class DatosEjemplo {
 		// Creamos usuarios aleatorios
 		int numeroDeEllos = 0;
 		numeroDeEllos = nombres.length * apellidos.length;
-		numeroDeEllos = 40;
+		//numeroDeEllos = 40;
 		System.out.println("numero de usuarios a cargar " + (3 + numeroDeEllos));
 		for (int i = 1; i <= numeroDeEllos; i++) {
 			User user = createRandomUser();
@@ -67,6 +72,8 @@ public class DatosEjemplo {
 			usersService.addUser(user);
 
 		}
+
+		log.info("Se han creado " + usuariosAñadir.size() + " usuarios. Fecha: " + Calendar.getInstance().getTime());
 
 	}
 
@@ -100,6 +107,8 @@ public class DatosEjemplo {
 		for (User u : usuariosAñadir) {
 			usersService.addUser(u);
 		}
+
+		log.info("Se han creado " + usuariosAñadir.size() + " usuarios. Fecha: " + Calendar.getInstance().getTime());
 	}
 
 	private User createRandomUser() {

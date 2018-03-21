@@ -2,6 +2,9 @@ package com.uniovi.services;
 
 import com.uniovi.entities.User;
 import com.uniovi.repositories.UsersRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,6 +32,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private UsersRepository usersRepository;
 
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = usersRepository.findByEmail(email);
@@ -41,6 +46,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
 		// grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		// El user que viene a continuacion es el user que maneja spring, no el nuestro
+		log.debug("Se ha iniciado sesion con el usuario: " + user.getEmail() + " y la pass: " + user.getPassword()
+				+ ". Fecha: " + Calendar.getInstance().getTime());
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
 				grantedAuthorities);
 	}
