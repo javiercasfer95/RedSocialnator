@@ -1,0 +1,831 @@
+2018-03-22 11:55:33.009 ERROR 13371 --- [main] o.s.b.l.LoggingApplicationListener       : Cannot set level: ERROR  for 'org.springframework.web'
+2018-03-22 11:55:33.012 ERROR 13371 --- [main] o.s.b.l.LoggingApplicationListener       : Cannot set level: ERRO for 'org.hibernate'
+2018-03-22 11:55:34.442  INFO 13371 --- [main] com.uniovi.RedSocialnatorApplication     : Starting RedSocialnatorApplication on javier-ThinkPad-T430 with PID 13371 (/home/javier/Documentos/SDI/Workspace_RedSocialnator/RedSocialnator/target/classes started by javier in /home/javier/Documentos/SDI/Workspace_RedSocialnator/RedSocialnator)
+2018-03-22 11:55:34.443  INFO 13371 --- [main] com.uniovi.RedSocialnatorApplication     : No active profile set, falling back to default profiles: default
+2018-03-22 11:55:35.628  INFO 13371 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37e547da: startup date [Thu Mar 22 11:55:35 CET 2018]; root of context hierarchy
+2018-03-22 11:55:41.993  INFO 13371 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2a348549] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-03-22 11:55:43.534  INFO 13371 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2018-03-22 11:55:43.548  INFO 13371 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-03-22 11:55:43.549  INFO 13371 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-03-22 11:55:43.643  INFO 13371 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-03-22 11:55:43.643  INFO 13371 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8019 ms
+2018-03-22 11:55:43.798  INFO 13371 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-03-22 11:55:43.798  INFO 13371 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-03-22 11:55:43.798  INFO 13371 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-03-22 11:55:43.799  INFO 13371 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-03-22 11:55:43.799  INFO 13371 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-03-22 11:55:43.800  INFO 13371 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-03-22 11:55:45.179 ERROR 13371 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+java.sql.SQLTransientConnectionException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCDriver.connect(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.27.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) [spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) [spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:326) [spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:366) [spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.DatabaseLookup.getDatabase(DatabaseLookup.java:72) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties.determineDatabase(JpaProperties.java:139) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.jpaVendorAdapter(JpaBaseConfiguration.java:105) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$93bae969.CGLIB$jpaVendorAdapter$6(<generated>) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$93bae969$$FastClassBySpringCGLIB$$5a6055ce.invoke(<generated>) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) [spring-core-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$93bae969.jpaVendorAdapter(<generated>) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1080) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at com.uniovi.RedSocialnatorApplication.main(RedSocialnatorApplication.java:10) [classes/:na]
+Caused by: org.hsqldb.HsqlException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.hsqldb.ClientConnection.openConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.ClientConnection.initConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.ClientConnection.<init>(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	... 76 common frames omitted
+Caused by: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_151]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_151]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_151]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_151]
+	at java.net.Socket.<init>(Socket.java:434) ~[na:1.8.0_151]
+	at java.net.Socket.<init>(Socket.java:211) ~[na:1.8.0_151]
+	at org.hsqldb.server.HsqlSocketFactory.createSocket(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	... 79 common frames omitted
+
+2018-03-22 11:55:45.202  WARN 13371 --- [main] o.s.b.a.orm.jpa.DatabaseLookup           : Unable to determine jdbc url from datasource
+
+org.springframework.jdbc.support.MetaDataAccessException: Could not get Connection for extracting meta data; nested exception is org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is java.sql.SQLTransientConnectionException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:339) ~[spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:366) ~[spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.DatabaseLookup.getDatabase(DatabaseLookup.java:72) ~[spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties.determineDatabase(JpaProperties.java:139) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.jpaVendorAdapter(JpaBaseConfiguration.java:105) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$93bae969.CGLIB$jpaVendorAdapter$6(<generated>) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$93bae969$$FastClassBySpringCGLIB$$5a6055ce.invoke(<generated>) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228) [spring-core-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$93bae969.jpaVendorAdapter(<generated>) [spring-boot-autoconfigure-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1080) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at com.uniovi.RedSocialnatorApplication.main(RedSocialnatorApplication.java:10) [classes/:na]
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is java.sql.SQLTransientConnectionException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:326) ~[spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	... 61 common frames omitted
+Caused by: java.sql.SQLTransientConnectionException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCDriver.connect(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) ~[spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) ~[spring-jdbc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	... 62 common frames omitted
+Caused by: org.hsqldb.HsqlException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.hsqldb.ClientConnection.openConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.ClientConnection.initConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.ClientConnection.<init>(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	... 76 common frames omitted
+Caused by: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_151]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_151]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_151]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_151]
+	at java.net.Socket.<init>(Socket.java:434) ~[na:1.8.0_151]
+	at java.net.Socket.<init>(Socket.java:211) ~[na:1.8.0_151]
+	at org.hsqldb.server.HsqlSocketFactory.createSocket(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	... 79 common frames omitted
+
+2018-03-22 11:55:45.394  INFO 13371 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-03-22 11:55:45.427  INFO 13371 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-03-22 11:55:45.925  INFO 13371 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-03-22 11:55:45.927  INFO 13371 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-03-22 11:55:45.929  INFO 13371 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-03-22 11:55:45.991  INFO 13371 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-03-22 11:55:46.183 ERROR 13371 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+java.sql.SQLTransientConnectionException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCDriver.connect(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.27.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.27.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:254) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:228) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.handleTypes(MetadataBuildingProcess.java:352) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:111) [hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:847) [hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:874) [hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60) [spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:360) [spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:382) [spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:371) [spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:336) [spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1080) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at com.uniovi.RedSocialnatorApplication.main(RedSocialnatorApplication.java:10) [classes/:na]
+Caused by: org.hsqldb.HsqlException: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at org.hsqldb.ClientConnection.openConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.ClientConnection.initConnection(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.ClientConnection.<init>(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	... 51 common frames omitted
+Caused by: java.net.ConnectException: Conexión rehusada (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_151]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_151]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_151]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_151]
+	at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_151]
+	at java.net.Socket.<init>(Socket.java:434) ~[na:1.8.0_151]
+	at java.net.Socket.<init>(Socket.java:211) ~[na:1.8.0_151]
+	at org.hsqldb.server.HsqlSocketFactory.createSocket(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	... 54 common frames omitted
+
+2018-03-22 11:55:46.188  WARN 13371 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata : java.net.ConnectException: Conexión rehusada (Connection refused)
+2018-03-22 11:55:46.190  WARN 13371 --- [main] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+2018-03-22 11:55:46.193  INFO 13371 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-03-22 11:55:46.213  INFO 13371 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-03-22 11:55:46.222 ERROR 13371 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1080) ~[spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) ~[spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at com.uniovi.RedSocialnatorApplication.main(RedSocialnatorApplication.java:10) [classes/:na]
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:228) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.handleTypes(MetadataBuildingProcess.java:352) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:111) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:847) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:874) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:360) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:382) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:371) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:336) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	... 16 common frames omitted
+Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:100) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:54) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:137) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:254) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	... 33 common frames omitted
+
+2018-03-22 12:03:47.026 ERROR 13647 --- [main] o.s.b.l.LoggingApplicationListener       : Cannot set level: ERROR  for 'org.springframework.web'
+2018-03-22 12:03:47.030 ERROR 13647 --- [main] o.s.b.l.LoggingApplicationListener       : Cannot set level: ERRO for 'org.hibernate'
+2018-03-22 12:03:47.081  INFO 13647 --- [main] com.uniovi.RedSocialnatorApplication     : Starting RedSocialnatorApplication on javier-ThinkPad-T430 with PID 13647 (/home/javier/Documentos/SDI/Workspace_RedSocialnator/RedSocialnator/target/classes started by javier in /home/javier/Documentos/SDI/Workspace_RedSocialnator/RedSocialnator)
+2018-03-22 12:03:47.081  INFO 13647 --- [main] com.uniovi.RedSocialnatorApplication     : No active profile set, falling back to default profiles: default
+2018-03-22 12:03:47.292  INFO 13647 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37e547da: startup date [Thu Mar 22 12:03:47 CET 2018]; root of context hierarchy
+2018-03-22 12:03:48.214  INFO 13647 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6c5cb73d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-03-22 12:03:48.519  INFO 13647 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2018-03-22 12:03:48.527  INFO 13647 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-03-22 12:03:48.528  INFO 13647 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-03-22 12:03:48.613  INFO 13647 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-03-22 12:03:48.613  INFO 13647 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1325 ms
+2018-03-22 12:03:48.765  INFO 13647 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-03-22 12:03:48.765  INFO 13647 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-03-22 12:03:48.766  INFO 13647 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-03-22 12:03:48.766  INFO 13647 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-03-22 12:03:48.767  INFO 13647 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-03-22 12:03:48.767  INFO 13647 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-03-22 12:03:50.210  INFO 13647 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-03-22 12:03:50.219  INFO 13647 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-03-22 12:03:50.261  INFO 13647 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-03-22 12:03:50.263  INFO 13647 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-03-22 12:03:50.263  INFO 13647 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-03-22 12:03:50.289  INFO 13647 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-03-22 12:03:50.390  INFO 13647 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2018-03-22 12:03:50.846  INFO 13647 --- [main] o.h.tool.hbm2ddl.SchemaValidator         : HHH000229: Running schema validator
+2018-03-22 12:03:50.871  INFO 13647 --- [main] rmationExtractorJdbcDatabaseMetaDataImpl : HHH000262: Table not found: amigos
+2018-03-22 12:03:50.874  INFO 13647 --- [main] rmationExtractorJdbcDatabaseMetaDataImpl : HHH000262: Table not found: amigos
+2018-03-22 12:03:50.876  WARN 13647 --- [main] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+2018-03-22 12:03:50.880  INFO 13647 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-03-22 12:03:50.907  INFO 13647 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-03-22 12:03:50.914 ERROR 13647 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1080) ~[spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) ~[spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.10.RELEASE.jar:1.5.10.RELEASE]
+	at com.uniovi.RedSocialnatorApplication.main(RedSocialnatorApplication.java:10) [classes/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.persistenceException(EntityManagerFactoryBuilderImpl.java:954) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:882) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:360) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:382) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:371) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:336) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) ~[spring-beans-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	... 16 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [amigos]
+	at org.hibernate.tool.schema.internal.SchemaValidatorImpl.validateTable(SchemaValidatorImpl.java:67) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.schema.internal.SchemaValidatorImpl.doValidation(SchemaValidatorImpl.java:50) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaValidator.validate(SchemaValidator.java:91) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:475) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:444) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:879) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	... 23 common frames omitted
+
+2018-03-22 12:04:48.129 ERROR 13707 --- [main] o.s.b.l.LoggingApplicationListener       : Cannot set level: ERROR  for 'org.springframework.web'
+2018-03-22 12:04:48.132 ERROR 13707 --- [main] o.s.b.l.LoggingApplicationListener       : Cannot set level: ERRO for 'org.hibernate'
+2018-03-22 12:04:48.189  INFO 13707 --- [main] com.uniovi.RedSocialnatorApplication     : Starting RedSocialnatorApplication on javier-ThinkPad-T430 with PID 13707 (/home/javier/Documentos/SDI/Workspace_RedSocialnator/RedSocialnator/target/classes started by javier in /home/javier/Documentos/SDI/Workspace_RedSocialnator/RedSocialnator)
+2018-03-22 12:04:48.189  INFO 13707 --- [main] com.uniovi.RedSocialnatorApplication     : No active profile set, falling back to default profiles: default
+2018-03-22 12:04:48.513  INFO 13707 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37e547da: startup date [Thu Mar 22 12:04:48 CET 2018]; root of context hierarchy
+2018-03-22 12:04:49.697  INFO 13707 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$41fa25a4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-03-22 12:04:50.002  INFO 13707 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2018-03-22 12:04:50.011  INFO 13707 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-03-22 12:04:50.012  INFO 13707 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-03-22 12:04:50.092  INFO 13707 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-03-22 12:04:50.092  INFO 13707 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1586 ms
+2018-03-22 12:04:50.225  INFO 13707 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-03-22 12:04:50.226  INFO 13707 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-03-22 12:04:50.226  INFO 13707 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-03-22 12:04:50.226  INFO 13707 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-03-22 12:04:50.227  INFO 13707 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-03-22 12:04:50.227  INFO 13707 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-03-22 12:04:51.535  INFO 13707 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-03-22 12:04:51.544  INFO 13707 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-03-22 12:04:51.592  INFO 13707 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-03-22 12:04:51.593  INFO 13707 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-03-22 12:04:51.594  INFO 13707 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-03-22 12:04:51.622  INFO 13707 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-03-22 12:04:51.702  INFO 13707 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2018-03-22 12:04:52.210  INFO 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2018-03-22 12:04:52.217 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table amigos drop constraint FKpvem645oqsw4ht16fy242r1tt
+2018-03-22 12:04:52.217 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.AMIGOS
+2018-03-22 12:04:52.218 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table amigos drop constraint FKhx0affki0jus4wwvrttg0wf51
+2018-03-22 12:04:52.218 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.AMIGOS
+2018-03-22 12:04:52.219 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table peticion_amistad drop constraint FKi3q3ybi103kgf6wv2013b4wcv
+2018-03-22 12:04:52.219 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PETICION_AMISTAD
+2018-03-22 12:04:52.221 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table peticion_amistad drop constraint FK1w1840t7tfiks470s0ehiybuy
+2018-03-22 12:04:52.221 ERROR 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : usuario no tiene privilegios suficientes o objeto no encontrado: PUBLIC.PETICION_AMISTAD
+2018-03-22 12:04:52.232  INFO 13707 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2018-03-22 12:04:52.256  INFO 13707 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-03-22 12:04:52.577  INFO 13707 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-03-22 12:04:54.314  INFO 13707 --- [main] com.uniovi.services.DatosEjemplo         : Se han creado 11 usuarios. Fecha: Thu Mar 22 12:04:54 CET 2018
+2018-03-22 12:04:54.645  INFO 13707 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@23e61112, org.springframework.security.web.context.SecurityContextPersistenceFilter@13278a41, org.springframework.security.web.header.HeaderWriterFilter@509a6095, org.springframework.security.web.authentication.logout.LogoutFilter@a3cba3a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@54f6b629, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ab595c8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b5a19ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58a7dc4, org.springframework.security.web.session.SessionManagementFilter@75bd28d, org.springframework.security.web.access.ExceptionTranslationFilter@50cdfafa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ceb7701]
+2018-03-22 12:04:54.871  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37e547da: startup date [Thu Mar 22 12:04:48 CET 2018]; root of context hierarchy
+2018-03-22 12:04:54.921  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/debug/deleteAllUsers]}" onto public java.lang.String com.uniovi.controller.AdminController.deleteAllUsers(org.springframework.ui.Model)
+2018-03-22 12:04:54.923  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/debug/deleteUser]}" onto public java.lang.String com.uniovi.controller.AdminController.deleteUser(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.String)
+2018-03-22 12:04:54.923  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/debug/generateDefault]}" onto public java.lang.String com.uniovi.controller.AdminController.generateDefault(org.springframework.data.domain.Pageable,org.springframework.ui.Model)
+2018-03-22 12:04:54.923  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/debug/list]}" onto public java.lang.String com.uniovi.controller.AdminController.debugListUsers(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.lang.String)
+2018-03-22 12:04:54.924  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/home],methods=[GET]}" onto public java.lang.String com.uniovi.controller.HomeController.home(org.springframework.data.domain.Pageable,java.security.Principal,org.springframework.ui.Model)
+2018-03-22 12:04:54.925  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/notFound]}" onto public java.lang.String com.uniovi.controller.HomeController.notFound(java.security.Principal,org.springframework.ui.Model)
+2018-03-22 12:04:54.925  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/accesoDenegado],methods=[GET]}" onto public java.lang.String com.uniovi.controller.HomeController.errorPage(java.security.Principal,org.springframework.ui.Model)
+2018-03-22 12:04:54.926  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.uniovi.controller.HomeController.index(java.security.Principal,org.springframework.ui.Model)
+2018-03-22 12:04:54.927  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/peticiones/listEnviadas]}" onto public java.lang.String com.uniovi.controller.PeticionAmistadController.getListadoPeticionesFrom(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.security.Principal)
+2018-03-22 12:04:54.927  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/peticion/enviarPeticion]}" onto public java.lang.String com.uniovi.controller.PeticionAmistadController.enviarPeticion(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.security.Principal,java.lang.String)
+2018-03-22 12:04:54.927  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/peticion/aceptarPeticion]}" onto public java.lang.String com.uniovi.controller.PeticionAmistadController.aceptarPeticion(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.security.Principal,java.lang.String)
+2018-03-22 12:04:54.927  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/peticiones/listRecibidas]}" onto public java.lang.String com.uniovi.controller.PeticionAmistadController.getListadoPeticionesTo(org.springframework.data.domain.Pageable,org.springframework.ui.Model,java.security.Principal)
+2018-03-22 12:04:54.930  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/list]}" onto public java.lang.String com.uniovi.controller.UserController.getListadoUsuarios(org.springframework.data.domain.Pageable,java.security.Principal,org.springframework.ui.Model,java.lang.String)
+2018-03-22 12:04:54.930  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/myFriends]}" onto public java.lang.String com.uniovi.controller.UserController.getListadoAmigos(org.springframework.data.domain.Pageable,java.security.Principal,org.springframework.ui.Model)
+2018-03-22 12:04:54.931  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/signup],methods=[GET]}" onto public java.lang.String com.uniovi.controller.UserController.signup(org.springframework.ui.Model)
+2018-03-22 12:04:54.931  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/signup],methods=[POST]}" onto public java.lang.String com.uniovi.controller.UserController.signup(com.uniovi.entities.User,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2018-03-22 12:04:54.931  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[POST]}" onto public java.lang.String com.uniovi.controller.UserController.login(com.uniovi.entities.User,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2018-03-22 12:04:54.931  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public java.lang.String com.uniovi.controller.UserController.login(org.springframework.ui.Model,java.lang.Long)
+2018-03-22 12:04:54.932  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/user/delete/{id}]}" onto public java.lang.String com.uniovi.controller.UserController.delete(java.lang.Long)
+2018-03-22 12:04:54.934  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-03-22 12:04:54.935  INFO 13707 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-03-22 12:04:54.961  INFO 13707 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-22 12:04:54.962  INFO 13707 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-22 12:04:54.990  INFO 13707 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-22 12:04:55.478  INFO 13707 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-03-22 12:04:55.540  INFO 13707 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2018-03-22 12:04:55.544  INFO 13707 --- [main] com.uniovi.RedSocialnatorApplication     : Started RedSocialnatorApplication in 7.599 seconds (JVM running for 8.09)
+2018-03-22 12:05:05.973  INFO 13707 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-03-22 12:05:05.974  INFO 13707 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-03-22 12:05:05.985  INFO 13707 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 11 ms
+2018-03-22 12:05:40.440  INFO 13707 --- [http-nio-8090-exec-3] com.uniovi.services.DatosEjemplo         : Se han creado 11 usuarios. Fecha: Thu Mar 22 12:05:40 CET 2018
+2018-03-22 12:05:40.441  INFO 13707 --- [http-nio-8090-exec-3] com.uniovi.services.AdminService         : Se han borrado todos los usuarios y se han creado los usuarios por defecto. Fecha: Thu Mar 22 12:05:40 CET 2018
+2018-03-22 12:05:49.081 ERROR 13707 --- [http-nio-8090-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+
+java.lang.NullPointerException: null
+	at com.uniovi.controller.UserController.getListadoUsuarios(UserController.java:72) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_151]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_151]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_151]
+
+2018-03-22 12:05:51.018  INFO 13707 --- [http-nio-8090-exec-3] com.uniovi.services.DatosEjemplo         : Se han creado 76 usuarios. Fecha: Thu Mar 22 12:05:51 CET 2018
+2018-03-22 12:05:51.018  INFO 13707 --- [http-nio-8090-exec-3] com.uniovi.services.AdminService         : Se han borrado todos los usuarios y se han creado los usuarios aleatorios. Fecha: Thu Mar 22 12:05:51 CET 2018
+2018-03-22 12:06:11.134  INFO 13707 --- [http-nio-8090-exec-3] com.uniovi.services.DatosEjemplo         : Se han creado 11 usuarios. Fecha: Thu Mar 22 12:06:11 CET 2018
+2018-03-22 12:06:11.134  INFO 13707 --- [http-nio-8090-exec-3] com.uniovi.services.AdminService         : Se han borrado todos los usuarios y se han creado los usuarios por defecto. Fecha: Thu Mar 22 12:06:11 CET 2018
+2018-03-22 12:06:14.241  WARN 13707 --- [http-nio-8090-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: -104, SQLState: 23505
+2018-03-22 12:06:14.242 ERROR 13707 --- [http-nio-8090-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : violación del restricción de integridad: violación de índice o clave única; UK_OB8KQYQQGMEFL0ACO34AKDTPE table: USER
+2018-03-22 12:06:14.269 ERROR 13707 --- [http-nio-8090-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [UK_OB8KQYQQGMEFL0ACO34AKDTPE]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
+
+java.sql.SQLIntegrityConstraintViolationException: violación del restricción de integridad: violación de índice o clave única; UK_OB8KQYQQGMEFL0ACO34AKDTPE table: USER
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCPreparedStatement.fetchResult(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at org.hsqldb.jdbc.JDBCPreparedStatement.executeUpdate(Unknown Source) ~[hsqldb-2.3.5.jar:2.3.5]
+	at sun.reflect.GeneratedMethodAccessor72.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.apache.tomcat.jdbc.pool.StatementFacade$StatementProxy.invoke(StatementFacade.java:114) ~[tomcat-jdbc-8.5.27.jar:na]
+	at com.sun.proxy.$Proxy93.executeUpdate(Unknown Source) ~[na:na]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:204) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:57) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:42) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:2855) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3426) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:81) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:619) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:273) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:254) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:299) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:317) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:272) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:178) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:109) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.event.internal.core.JpaPersistEventListener.saveWithGeneratedId(JpaPersistEventListener.java:67) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:189) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:132) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:58) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:775) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:748) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:753) ~[hibernate-core-5.0.12.Final.jar:5.0.12.Final]
+	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1146) ~[hibernate-entitymanager-5.0.12.Final.jar:5.0.12.Final]
+	at sun.reflect.GeneratedMethodAccessor74.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:347) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at com.sun.proxy.$Proxy86.persist(Unknown Source) ~[na:na]
+	at sun.reflect.GeneratedMethodAccessor74.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:298) ~[spring-orm-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at com.sun.proxy.$Proxy86.persist(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:508) ~[spring-data-jpa-1.11.10.RELEASE.jar:na]
+	at sun.reflect.GeneratedMethodAccessor78.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.executeMethodOn(RepositoryFactorySupport.java:513) ~[spring-data-commons-1.13.10.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:498) ~[spring-data-commons-1.13.10.RELEASE.jar:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:475) ~[spring-data-commons-1.13.10.RELEASE.jar:na]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:56) ~[spring-data-commons-1.13.10.RELEASE.jar:na]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99) ~[spring-tx-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282) ~[spring-tx-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96) ~[spring-tx-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:136) ~[spring-tx-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:133) ~[spring-data-jpa-1.11.10.RELEASE.jar:na]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:57) ~[spring-data-commons-1.13.10.RELEASE.jar:na]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213) ~[spring-aop-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at com.sun.proxy.$Proxy89.save(Unknown Source) ~[na:na]
+	at com.uniovi.services.UserService.addUser(UserService.java:57) ~[classes/:na]
+	at com.uniovi.services.DatosEjemplo.init(DatosEjemplo.java:72) ~[classes/:na]
+	at com.uniovi.services.AdminService.deleteAllUsers(AdminService.java:39) ~[classes/:na]
+	at com.uniovi.controller.AdminController.deleteAllUsers(AdminController.java:41) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:114) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) ~[tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_151]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_151]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_151]
+
+2018-03-22 12:06:30.236 ERROR 13707 --- [http-nio-8090-exec-10] w.a.UsernamePasswordAuthenticationFilter : An internal error occurred while trying to authenticate the user.
+
+org.springframework.security.authentication.InternalAuthenticationServiceException: null
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:126) ~[spring-security-core-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144) ~[spring-security-core-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:174) ~[spring-security-core-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:199) ~[spring-security-core-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:94) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:64) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177) [spring-security-web-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.14.RELEASE.jar:4.3.14.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_151]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_151]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.27.jar:8.5.27]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_151]
+Caused by: java.lang.NullPointerException: null
+	at com.uniovi.services.UserDetailsServiceImpl.loadUserByUsername(UserDetailsServiceImpl.java:46) ~[classes/:na]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:114) ~[spring-security-core-4.2.4.RELEASE.jar:4.2.4.RELEASE]
+	... 54 common frames omitted
+
+2018-03-22 12:06:43.601  INFO 13707 --- [http-nio-8090-exec-1] c.u.services.PeticionAmistadService      : Se ha creado una peticion de amistad entre javier@correo.es y joni@correo.es. Fecha: Thu Mar 22 12:06:43 CET 2018
+2018-03-22 12:06:49.443  INFO 13707 --- [http-nio-8090-exec-9] c.u.services.PeticionAmistadService      : Se ha creado una peticion de amistad entre javier@correo.es y ZeldaDogg@gmail.com. Fecha: Thu Mar 22 12:06:49 CET 2018
+2018-03-22 12:06:54.578  INFO 13707 --- [http-nio-8090-exec-6] c.u.services.PeticionAmistadService      : Se ha creado una peticion de amistad entre javier@correo.es y ZeldaFernandez@hotmail.es. Fecha: Thu Mar 22 12:06:54 CET 2018
+2018-03-22 12:08:00.968  INFO 13707 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2018-03-22 12:08:00.969  INFO 13707 --- [RMI TCP Connection(2)-127.0.0.1] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@37e547da: startup date [Thu Mar 22 12:04:48 CET 2018]; root of context hierarchy
+2018-03-22 12:08:00.971  INFO 13707 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-03-22 12:08:00.976  INFO 13707 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'

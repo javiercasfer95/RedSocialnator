@@ -77,7 +77,7 @@ public class DatosEjemplo {
 
 	}
 
-	// @PostConstruct
+	@PostConstruct
 	public void genereteDefaultUsers() {
 		usuariosAñadir = new HashSet();
 		System.out.println("-------------------Se van a cargar usuarios por defecto------------------------");
