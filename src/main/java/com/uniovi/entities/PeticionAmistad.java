@@ -11,87 +11,85 @@ import javax.persistence.Table;
 @Table(name = "peticionAmistad")
 public class PeticionAmistad {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	//Usuario que envia la peticion, no se utiliza para relacion
-	
-	@ManyToOne
-	@JoinColumn(name = "origen_id")
-	private User origen;
+    // Usuario que envia la peticion, no se utiliza para relacion
 
-	@ManyToOne
-	@JoinColumn(name = "destino_id")
-	private User destino;
+    @ManyToOne
+    @JoinColumn(name = "origen_id")
+    private User origen;
 
-	boolean aceptada = false;
+    @ManyToOne
+    @JoinColumn(name = "destino_id")
+    private User destino;
 
-	public PeticionAmistad() {
-		super();
-	}
+    boolean aceptada = false;
 
-	public PeticionAmistad(User origen, User destino) {
-		aceptada = false;
-		this.origen = origen;
-		this.destino = destino;
-	}
+    public PeticionAmistad() {
+	super();
+    }
 
-	public User getOrigen() {
-		return origen;
-	}
+    public PeticionAmistad(User origen, User destino) {
+	aceptada = false;
+	this.origen = origen;
+	this.destino = destino;
+    }
 
-	public void setOrigen(User origen) {
-		this.origen = origen;
-	}
+    public User getOrigen() {
+	return origen;
+    }
 
-	public User getDestino() {
-		return destino;
-	}
+    public void setOrigen(User origen) {
+	this.origen = origen;
+    }
 
-	public void setDestino(User destino) {
-		this.destino = destino;
-	}
+    public User getDestino() {
+	return destino;
+    }
 
-	public boolean isAceptada() {
-		return aceptada;
-	}
+    public void setDestino(User destino) {
+	this.destino = destino;
+    }
 
-	public void setAceptada(boolean aceptada) {
-		this.aceptada = aceptada;
-	}
+    public boolean isAceptada() {
+	return aceptada;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public void setAceptada(boolean aceptada) {
+	this.aceptada = aceptada;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PeticionAmistad other = (PeticionAmistad) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+	return result;
+    }
 
-	@Override
-	public String toString() {
-		return "PeticionAmistad [id=" + id + ", origen=" + origen + ", destino=" + destino + ", aceptada=" + aceptada
-				+ "]";
-	}
-	
-	
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	PeticionAmistad other = (PeticionAmistad) obj;
+	if (id == null) {
+	    if (other.id != null)
+		return false;
+	} else if (!id.equals(other.id))
+	    return false;
+	return true;
+    }
+
+    @Override
+    public String toString() {
+	return "PeticionAmistad [id=" + id + ", origen=" + origen + ", destino=" + destino + ", aceptada=" + aceptada
+		+ "]";
+    }
 
 }

@@ -17,91 +17,91 @@ import com.uniovi.repositories.UsersRepository;
 @Service
 public class PeticionAmistadService {
 
-	@Autowired
-	private PeticionAmistadRepository peticionAmistadRepository;
-	// OJO QUE ESTÁ HACIENDO UN FIND ALL
+    @Autowired
+    private PeticionAmistadRepository peticionAmistadRepository;
+    // OJO QUE ESTÁ HACIENDO UN FIND ALL
 
-	@Autowired
-	private UsersRepository userRepository;
+    @Autowired
+    private UsersRepository userRepository;
 
-	@Autowired
-	private RoleService roleService;
+    @Autowired
+    private RoleService roleService;
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable, User user) {
-		Page<PeticionAmistad> requests = peticionAmistadRepository.searchPeticionesFromUser(pageable, user);
-		return requests;
+    public Page<PeticionAmistad> getAllPeticionesFromUser(Pageable pageable, User user) {
+	Page<PeticionAmistad> requests = peticionAmistadRepository.searchPeticionesFromUser(pageable, user);
+	return requests;
+    }
+
+    // OJO QUE ESTÁ HACIENDO UN FIND ALL
+
+    public Page<PeticionAmistad> getAllPeticionesToUser(Pageable pageable, User user) {
+	Page<PeticionAmistad> peticiones = peticionAmistadRepository.searchPeticionesToUser(pageable, user);
+
+	return peticiones;
+    }
+
+    public Page<PeticionAmistad> getAllPeticionesDelSistema(Pageable pageable) {
+	Page<PeticionAmistad> res = peticionAmistadRepository.findAll(pageable);
+	return res;
+    }
+
+    public void crearPeticionAmistad(User origen, User destino) {
+	if (origen.getEmail().equals(destino.getEmail())) {
+	    log.debug("Se ha intentado crear una peticion de amistad entre " + origen.getEmail() + " y "
+		    + destino.getEmail() + ". Fecha: " + Calendar.getInstance().getTime());
+	    return;
 	}
 
-	// OJO QUE ESTÁ HACIENDO UN FIND ALL
+	if (origen.getRole().equals(roleService.getAdminRole()) || destino.getRole().equals(roleService.adminRole)) {
+	    log.debug("Se ha intentado crear una peticion de amistad entre algun admin y no, no queremos eso. Fecha: "
+		    + Calendar.getInstance().getTime());
+	    return;
+	}
+	/*
+	 * No queremos añadir mas de una peticion de amistad entre dos usuarios
+	 */
+	if (peticionAmistadRepository.numeroPeticionesEntreDosUsuarios(origen, destino) > 0) {
+	    return;
+	} else {
+	    PeticionAmistad peticionNueva = new PeticionAmistad(origen, destino);
+	    peticionAmistadRepository.save(peticionNueva);
+	}
+	log.info("Se ha creado una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
+		+ ". Fecha: " + Calendar.getInstance().getTime());
+    }
 
-	public Page<PeticionAmistad> getAllPeticionesToUser(Pageable pageable, User user) {
-		Page<PeticionAmistad> peticiones = peticionAmistadRepository.searchPeticionesToUser(pageable, user);
-
-		return peticiones;
+    public void aceptarPeticionAmistad(User origen, User destino) {
+	if (origen.getEmail().equals(destino.getEmail())) {
+	    log.debug("Se ha intentado aceptar una peticion de amistad entre " + origen.getEmail() + " y "
+		    + destino.getEmail() + ". Fecha: " + Calendar.getInstance().getTime());
+	    return;
 	}
 
-	public Page<PeticionAmistad> getAllPeticionesDelSistema(Pageable pageable) {
-		Page<PeticionAmistad> res = peticionAmistadRepository.findAll(pageable);
-		return res;
+	if (origen.getRole().equals(roleService.getAdminRole()) || destino.getRole().equals(roleService.adminRole)) {
+	    log.debug("Se ha intentado acpetar una peticion de amistad entre algun admin y no, no queremos eso. Fecha: "
+		    + Calendar.getInstance().getTime());
+	    return;
 	}
 
-	public void crearPeticionAmistad(User origen, User destino) {
-		if (origen.getEmail().equals(destino.getEmail())) {
-			log.debug("Se ha intentado crear una peticion de amistad entre " + origen.getEmail() + " y "
-					+ destino.getEmail() + ". Fecha: " + Calendar.getInstance().getTime());
-			return;
-		}
+	PeticionAmistad pet = peticionAmistadRepository.findByUsers(origen, destino);
+	pet.setAceptada(true);
+	peticionAmistadRepository.save(pet);
+	origen.getAmigos().add(destino);
+	destino.getAmigos().add(origen);
+	userRepository.save(origen);
+	userRepository.save(destino);
+	System.out.println(origen.getAmigos());
+	log.info("Se ha aceptado una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
+		+ ". Fecha: " + Calendar.getInstance().getTime());
+    }
 
-		if (origen.getRole().equals(roleService.getAdminRole()) || destino.getRole().equals(roleService.adminRole)) {
-			log.debug("Se ha intentado crear una peticion de amistad entre algun admin y no, no queremos eso. Fecha: "
-					+ Calendar.getInstance().getTime());
-			return;
-		}
-		/*
-		 * No queremos añadir mas de una peticion de amistad entre dos usuarios
-		 */
-		if (peticionAmistadRepository.numeroPeticionesEntreDosUsuarios(origen, destino) > 0) {
-			return;
-		} else {
-			PeticionAmistad peticionNueva = new PeticionAmistad(origen, destino);
-			peticionAmistadRepository.save(peticionNueva);
-		}
-		log.info("Se ha creado una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
-				+ ". Fecha: " + Calendar.getInstance().getTime());
+    public boolean existePeticion(User origen, User destino) {
+	if (peticionAmistadRepository.numeroPeticionesEntreDosUsuarios(origen, destino) > 0) {
+	    return true;
 	}
-
-	public void aceptarPeticionAmistad(User origen, User destino) {
-		if (origen.getEmail().equals(destino.getEmail())) {
-			log.debug("Se ha intentado aceptar una peticion de amistad entre " + origen.getEmail() + " y "
-					+ destino.getEmail() + ". Fecha: " + Calendar.getInstance().getTime());
-			return;
-		}
-
-		if (origen.getRole().equals(roleService.getAdminRole()) || destino.getRole().equals(roleService.adminRole)) {
-			log.debug("Se ha intentado acpetar una peticion de amistad entre algun admin y no, no queremos eso. Fecha: "
-					+ Calendar.getInstance().getTime());
-			return;
-		}
-
-		PeticionAmistad pet = peticionAmistadRepository.findByUsers(origen, destino);
-		pet.setAceptada(true);
-		peticionAmistadRepository.save(pet);
-		origen.getAmigos().add(destino);
-		destino.getAmigos().add(origen);
-		userRepository.save(origen);
-		userRepository.save(destino);
-		System.out.println(origen.getAmigos());
-		log.info("Se ha aceptado una peticion de amistad entre " + origen.getEmail() + " y " + destino.getEmail()
-				+ ". Fecha: " + Calendar.getInstance().getTime());
-	}
-
-	public boolean existePeticion(User origen, User destino) {
-		if (peticionAmistadRepository.numeroPeticionesEntreDosUsuarios(origen, destino) > 0) {
-			return true;
-		}
-		return false;
-	}
+	return false;
+    }
 
 }

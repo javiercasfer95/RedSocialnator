@@ -35,30 +35,28 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+	return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeRequests().antMatchers("/css/**", "/img/**", "/script/**", "/", "/signup", "/login")
-				.permitAll().antMatchers("/debug/**").hasAuthority("ROLE_ADMIN")
-				.antMatchers("user/**", "peticiones/**").hasAuthority("ROLE_USER")
-				.anyRequest().authenticated()
-				.and().formLogin().loginPage("/login").failureUrl("/login?error=1")
-				.defaultSuccessUrl("/home").and().logout().permitAll().and().
-				exceptionHandling().accessDeniedPage("/accesoDenegado")
-				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
-				;
-	}
+	http.csrf().disable().authorizeRequests()
+		.antMatchers("/css/**", "/img/**", "/script/**", "/", "/signup", "/login").permitAll()
+		.antMatchers("/debug/**").hasAuthority("ROLE_ADMIN").antMatchers("user/**", "peticiones/**")
+		.hasAuthority("ROLE_USER").anyRequest().authenticated().and().formLogin().loginPage("/login")
+		.failureUrl("/login?error=1").defaultSuccessUrl("/home").and().logout().permitAll().and()
+		.exceptionHandling().accessDeniedPage("/accesoDenegado").and().logout().logoutUrl("/logout")
+		.logoutSuccessUrl("/login");
+    }
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-	}
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    }
 }

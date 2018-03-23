@@ -4,22 +4,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoleService {
-	String[] roles = { "ROLE_USER", "ROLE_ADMIN" };
+    String[] roles = { "ROLE_USER", "ROLE_ADMIN" };
 
-	String defaultRole = roles[0];
-	String adminRole = roles[1];
+    String defaultRole = roles[0];
+    String adminRole = roles[1];
 
-	public String[] getRoles() {
-		return roles;
-	}
+    public String[] getRoles() {
+	return roles;
+    }
 
-	public String getDefaultRole() {
-		return defaultRole;
-	}
+    public String getDefaultRole() {
+	return defaultRole;
+    }
 
-	public String getAdminRole() {
-		return adminRole;
-	}
-	
-	
+    public String getAdminRole() {
+	return adminRole;
+    }
+
 }

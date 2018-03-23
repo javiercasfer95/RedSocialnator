@@ -25,154 +25,117 @@ import com.uniovi.validator.SignUpFromValidator;
 @Controller
 public class UserController {
 
-	/*
-	 * 
-	 * COSAS QUE FALTAN
-	 * 
-	 * Que en el login se diga porque ha fallado cuando no se ha podido iniciar
-	 * sesion. Puede ser por que el correo no exista o porque la contraseña este
-	 * mal. En la teoria tema 3 y pag 48 hay una posible solucion
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
+    @Autowired
+    UserService userService;
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    private SignUpFromValidator signUpFormValidator;
 
-	@Autowired
-	private SignUpFromValidator signUpFormValidator;
+    @Autowired
+    SecurityService securityService;
 
-	// @Autowired
-	// private LogInFormValidator logInFormValidator;
+    @Autowired
+    PeticionAmistadRepository peticionAmistadRepository;
 
-	@Autowired
-	SecurityService securityService;
+    @Autowired
+    RoleService roleService;
 
-	@Autowired
-	PeticionAmistadRepository peticionAmistadRepository;
+    @RequestMapping("/user/list")
+    public String getListadoUsuarios(Pageable pageable, Principal principal, Model model,
+	    @RequestParam(value = "", required = false) String searchText) {
 
-	@Autowired
-	RoleService roleService;
+	String email = principal.getName();
+	User user = userService.getUserByEmail(email);
+	if (user.getRole().equals(roleService.getAdminRole())) {
+	    return "redirect:/debug/list";
+	}
+	model.addAttribute("user", user);
+	Page<User> users = userService.getUsers(pageable);
+	List<String> emailUsuarioConRelaciones = userService.getUsuariosConRelaciones(user);
 
-	@RequestMapping("/user/list")
-	public String getListadoUsuarios(Pageable pageable, Principal principal, Model model,
-			@RequestParam(value = "", required = false) String searchText) {
+	if (searchText != null && !searchText.isEmpty()) {
 
-		String email = principal.getName();
-		User user = userService.getUserByEmail(email);
-		if (user.getRole().equals(roleService.getAdminRole())) {
-			return "redirect:/debug/list";
-		}
-		model.addAttribute("user", user);
-		Page<User> users = userService.getUsers(pageable);
-		List<String> emailUsuarioConRelaciones = userService.getUsuariosConRelaciones(user);
+	    users = userService.searchUserByEmailAndName(pageable, searchText);
+	    model.addAttribute("usersList", users.getContent());
+	    model.addAttribute("page", users);
 
-		if (searchText != null && !searchText.isEmpty()) {
+	} else {
 
-			users = userService.searchUserByEmailAndName(pageable, searchText);
-			model.addAttribute("usersList", users.getContent());
-			model.addAttribute("page", users);
-
-		} else {
-
-			model.addAttribute("usersList", users.getContent());
-			model.addAttribute("page", users);
-		}
-
-		model.addAttribute("usuariosConRelaciones", emailUsuarioConRelaciones);
-
-		return "user/list";
+	    model.addAttribute("usersList", users.getContent());
+	    model.addAttribute("page", users);
 	}
 
-	@RequestMapping("/user/myFriends")
-	public String getListadoAmigos(Pageable pageable, Principal principal, Model model) {
+	model.addAttribute("usuariosConRelaciones", emailUsuarioConRelaciones);
 
-		String email = principal.getName();
-		User user = userService.getUserByEmail(email);
-		// model.addAttribute("user", user);
-		Page<User> users = userService.getAllAmigos(pageable, user);
-		model.addAttribute("amigosList", users.getContent());
-		model.addAttribute("page", users);
-		return "user/myFriends";
+	return "user/list";
+    }
+
+    @RequestMapping("/user/myFriends")
+    public String getListadoAmigos(Pageable pageable, Principal principal, Model model) {
+
+	String email = principal.getName();
+	User user = userService.getUserByEmail(email);
+	if (user.getRole().equals(roleService.getAdminRole())) {
+	    return "redirect:/debug/list";
 	}
+	Page<User> users = userService.getAllAmigos(pageable, user);
+	model.addAttribute("amigosList", users.getContent());
+	model.addAttribute("page", users);
+	return "user/myFriends";
+    }
 
-	/**
-	 * Es importante enviar obtener un user vacio de tipo get para que el validador
-	 * no pete la primera vez
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signup(Model model) {
-		model.addAttribute("user", new User());
-		return "signup";
+    /**
+     * Es importante enviar obtener un user vacio de tipo get para que el validador
+     * no pete la primera vez
+     * 
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String signup(Model model) {
+	model.addAttribute("user", new User());
+	return "signup";
+    }
+
+    // LOG IN
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public String signup(@Validated User user, BindingResult result, Model model) {
+
+	signUpFormValidator.validate(user, result);
+	if (result.hasErrors()) {
+	    return "signup";
 	}
+	user.setRole(roleService.getRoles()[0]);
 
-	// LOG IN
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String signup(@Validated User user, BindingResult result, Model model) {
+	userService.addUser(user);
+	securityService.autoLogin(user.getEmail(), user.getPasswordConfirm()); // Aqui es donde hago el autologin
+	return "redirect:home";
+    }
 
-		signUpFormValidator.validate(user, result);
-		if (result.hasErrors()) {
-			return "signup";
-		}
-		user.setRole(roleService.getRoles()[0]);
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, @RequestParam(value = "error", required = false) Long error) {
+	if (error != null)
+	    model.addAttribute("error", error);
+	return "login";
+    }
 
-		userService.addUser(user);
-		securityService.autoLogin(user.getEmail(), user.getPasswordConfirm()); // Aqui es donde hago el autologin
-		return "redirect:home";
-	}
+    /**
+     * Log in con la comprobacion de lo que esta bien y de lo que esta mal
+     * 
+     * @param user
+     * @param result
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@Validated User user, BindingResult result, Model model) {
+	return "home";
+    }
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model, @RequestParam(value = "error", required = false) Long error) {
-		if (error != null)
-			model.addAttribute("error", error);
-		return "login";
-	}
-
-	/**
-	 * Log in con la comprobacion de lo que esta bien y de lo que esta mal
-	 * 
-	 * @param user
-	 * @param result
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@Validated User user, BindingResult result, Model model) {
-		// logInFormValidator.validate(user, result);
-		// if (result.hasErrors()) {
-		// return "login";
-		// }
-		//
-		// securityService.autoLogin(user.getEmail(), user.getPassword());
-		return "home";
-	}
-
-	@RequestMapping("/user/delete/{id}")
-	public String delete(@PathVariable Long id) {
-		userService.deleteUser(id);
-		return "redirect:/debug/list";
-	}
-
-	// @RequestMapping(value = "/debug/list")
-	// public String debugListUsers(Model model, Pageable pageable) {
-	// Page<User> users = userService.getUsers(pageable);
-	// model.addAttribute("usersList", users.getContent());
-	// model.addAttribute("page", users);
-	// return "login";
-	// }
-
-	// DEBUG
+    @RequestMapping("/user/delete/{id}")
+    public String delete(@PathVariable Long id) {
+	userService.deleteUser(id);
+	return "redirect:/debug/list";
+    }
 
 }

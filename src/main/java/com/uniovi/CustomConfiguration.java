@@ -23,39 +23,39 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Configuration
 public class CustomConfiguration extends WebMvcConfigurerAdapter {
 
-	/*
-	 * Los beans son en el unico sitio donde se pone el contructor directamente, el
-	 * resto con autowired
-	 */
+    /*
+     * Los beans son en el unico sitio donde se pone el contructor directamente, el
+     * resto con autowired
+     */
 
-	@Bean
-	public LocaleResolver localeResolver() {
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-		localeResolver.setDefaultLocale(new Locale("es", "ES"));
-		return localeResolver;
-	}
+    @Bean
+    public LocaleResolver localeResolver() {
+	SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+	localeResolver.setDefaultLocale(new Locale("es", "ES"));
+	return localeResolver;
+    }
 
-	@Bean
-	public LocaleChangeInterceptor localeChangeInterceptor() {
-		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-		localeChangeInterceptor.setParamName("lang");
-		return localeChangeInterceptor;
-	}
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+	LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+	localeChangeInterceptor.setParamName("lang");
+	return localeChangeInterceptor;
+    }
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(localeChangeInterceptor());
-	}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+	registry.addInterceptor(localeChangeInterceptor());
+    }
 
-	/**
-	 * OBLIGATORIO PARA LA PAGINACION
-	 */
-	@Override
-	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+    /**
+     * OBLIGATORIO PARA LA PAGINACION
+     */
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 
-		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
-		resolver.setFallbackPageable(new PageRequest(0, 5));
-		argumentResolvers.add(resolver);
-		super.addArgumentResolvers(argumentResolvers);
-	}
+	PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
+	resolver.setFallbackPageable(new PageRequest(0, 5));
+	argumentResolvers.add(resolver);
+	super.addArgumentResolvers(argumentResolvers);
+    }
 }

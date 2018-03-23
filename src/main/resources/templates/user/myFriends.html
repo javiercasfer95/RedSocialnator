@@ -7,33 +7,24 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		
-		<h2 th:text='#{text.usuariosDisponibles}'>Amigos</h2>
 
-		<form class="navbar-form" action="/user/list">
-			<div class="form-group">
-				<input name="searchText" type="text" class="form-control" size="50"
-					placeholder="Buscar por Email o nombre del alumno">
-			</div>
-			<button type="submit" class="btn btn-default">Buscar</button>
-		</form>
-		
+		<h2 th:text='#{amigos.field}'>Amigos</h2>
+
 		<div class="table-responsive">
 			<table class="table table-hover" id="tablaAmigos">
 				<thead>
 					<tr>
-						<th th:text='#{email.field}'>Email</th>
+
 						<th th:text='#{nombre.field}'>Nombre</th>
-						<th th:text='#{apellidos.field}'>Apellidos</th>
-<!-- 						<th class="col-md-1"></th> -->
-					<!-- 	<th class="col-md-1"></th>  -->
+						<th th:text='#{email.field}'>Email</th>
+						<!-- 						<th class="col-md-1"></th> -->
+						<!-- 	<th class="col-md-1"></th>  -->
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:id="'filaDe' + ${user.email}" th:each="user : ${amigosList}">
-						<td th:text="${user.email}">ejemplo@correo.es</td>
 						<td th:text="${user.name}">Nombre del usuario</td>
-						<td th:text="${user.lastName}">Apellidos del usuario</td>
+						<td th:text="${user.email}">ejemplo@correo.es</td>
 						<!-- <td><a th:text='#{detalles.field}'
 							th:href="${' L' + user.email}">detalles</a></td> -->
 						<!-- <td><a href="/notFound">eliminar</a></td> -->

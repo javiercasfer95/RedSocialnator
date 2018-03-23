@@ -18,40 +18,40 @@ import org.springframework.stereotype.Service;;
  */
 @Service
 public class SecurityService {
-	@Autowired
-	private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	private static final Logger logger = LoggerFactory.getLogger(SecurityService.class);
+    private static final Logger logger = LoggerFactory.getLogger(SecurityService.class);
 
-	public String findLoggedInEmail() {
-		Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-		if (userDetails instanceof UserDetails) {
-			return ((UserDetails) userDetails).getUsername();//Username en verdad es el Email
-		}
-
-		return null;
+    public String findLoggedInEmail() {
+	Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
+	if (userDetails instanceof UserDetails) {
+	    return ((UserDetails) userDetails).getUsername();// Username en verdad es el Email
 	}
 
-	/**
-	 * Este metodo es para que cuando se registre un usuario se auto inicie su
-	 * sesion, no es obligatorio.
-	 * 
-	 * @param email
-	 * @param password
-	 */
-	public void autoLogin(String email, String password) {
-		UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-		UsernamePasswordAuthenticationToken aToken = new UsernamePasswordAuthenticationToken(userDetails, password,
-				userDetails.getAuthorities());
+	return null;
+    }
 
-		authenticationManager.authenticate(aToken);
+    /**
+     * Este metodo es para que cuando se registre un usuario se auto inicie su
+     * sesion, no es obligatorio.
+     * 
+     * @param email
+     * @param password
+     */
+    public void autoLogin(String email, String password) {
+	UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+	UsernamePasswordAuthenticationToken aToken = new UsernamePasswordAuthenticationToken(userDetails, password,
+		userDetails.getAuthorities());
 
-		if (aToken.isAuthenticated()) {
-			SecurityContextHolder.getContext().setAuthentication(aToken);
-			logger.debug(String.format("Auto login %s successfully!", email));
-		}
+	authenticationManager.authenticate(aToken);
+
+	if (aToken.isAuthenticated()) {
+	    SecurityContextHolder.getContext().setAuthentication(aToken);
+	    logger.debug(String.format("Auto login %s successfully!", email));
 	}
+    }
 }

@@ -23,107 +23,102 @@ import com.uniovi.repositories.UsersRepository;
 @Service
 public class UserService {
 
-	@Autowired
-	private UsersRepository usersRepository;
+    @Autowired
+    private UsersRepository usersRepository;
 
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	
+    @PostConstruct
+    public void init() {
+    }
 
-	@PostConstruct
-	public void init() {
+    public Page<User> getUsers(Pageable pageable) {
+	Page<User> users = usersRepository.findAllUsers(pageable);
+	return users;
+    }
+
+    public Page<User> getNotAdminUsers(Pageable pageable) {
+	Page<User> users = usersRepository.findNotAdminUsers(pageable);
+	return users;
+    }
+
+    public User getUser(Long id) {
+	return usersRepository.findOne(id);
+    }
+
+    public void addUser(User user) {
+	user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); // Hay que cifrar
+	usersRepository.save(user);
+    }
+
+    public User getUserByEmail(String email) {
+	return usersRepository.findByEmail(email);
+    }
+
+    public void deleteUser(Long id) {
+	usersRepository.delete(id);
+    }
+
+    public List<String> getAllEmail() {
+	List<User> usuarios = usersRepository.findAll();
+	List<String> correos = new ArrayList<>();
+	for (User u : usuarios) {
+	    correos.add(u.getEmail());
 	}
+	return correos;
+    }
 
-	public Page<User> getUsers(Pageable pageable) {
-		// List<User> users = new ArrayList<User>();
-		// Page<User> users = usersRepository.findAll(pageable);
-		// usersRepository.findAll().forEach(users::add);
-		Page<User> users = usersRepository.findAllUsers(pageable);
-		return users;
+    public boolean correctPassword(String password) {
+	List<User> usuarios = usersRepository.findAll();
+	for (User u : usuarios) {
+	    if (u.getPassword().equals(password))
+		return true;
 	}
+	return false;
+    }
 
-	public Page<User> getNotAdminUsers(Pageable pageable) {
-		Page<User> users = usersRepository.findNotAdminUsers(pageable);
-		return users;
-	}
+    /*
+     * BUSQUEDA
+     */
+    public Page<User> searchUserByEmailAndName(Pageable pageable, String searchText) {
+	Page<User> users = new PageImpl<User>(new LinkedList());
+	searchText = "%" + searchText + "%";
+	users = usersRepository.searchByEmailAndName(pageable, searchText);
+	return users;
+    }
 
-	public User getUser(Long id) {
-		return usersRepository.findOne(id);
-	}
+    public Page<User> getAllAmigos(Pageable pageable, User user) {
+	List<User> amigos = new ArrayList<User>(user.getAmigos());
+	Page<User> users = new PageImpl<User>(amigos);
+	return users;
+    }
 
-	public void addUser(User user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); // Hay que cifrar
-		usersRepository.save(user);
+    /**
+     * Método que pretende buscar email usuarios con cualquier tipo de relacion
+     * (peticiones/amistad) con un usuario que se pasa como praámetro
+     * 
+     * @param user
+     * @return
+     */
+    public List<String> getUsuariosConRelaciones(User user) {
+	List<String> listado = new ArrayList<String>();
+	Set<User> colegas = user.getAmigos();
+	Set<PeticionAmistad> peticionesEnviadas = user.getPeticionesEnviadas();
+	Set<PeticionAmistad> peticionesRecibidas = user.getPeticionesRecibidas();
+	for (User u : colegas) {
+	    if (!listado.contains(u.getEmail()))
+		listado.add(u.getEmail());
 	}
-
-	public User getUserByEmail(String email) {
-		return usersRepository.findByEmail(email);
+	for (PeticionAmistad p : peticionesEnviadas) {
+	    if (!listado.contains(p.getDestino().getEmail()))
+		listado.add(p.getDestino().getEmail());
 	}
-
-	public void deleteUser(Long id) {
-		usersRepository.delete(id);
+	for (PeticionAmistad p : peticionesRecibidas) {
+	    if (!listado.contains(p.getOrigen().getEmail()))
+		listado.add(p.getOrigen().getEmail());
 	}
-
-	public List<String> getAllEmail() {
-		List<User> usuarios = usersRepository.findAll();
-		List<String> correos = new ArrayList<>();
-		for (User u : usuarios) {
-			correos.add(u.getEmail());
-		}
-		return correos;
-	}
-
-	public boolean correctPassword(String password) {
-		List<User> usuarios = usersRepository.findAll();
-		for (User u : usuarios) {
-			if (u.getPassword().equals(password))
-				return true;
-		}
-		return false;
-	}
-
-	/*
-	 * BUSQUEDA
-	 */
-	public Page<User> searchUserByEmailAndName(Pageable pageable, String searchText) {
-		Page<User> users = new PageImpl<User>(new LinkedList());
-		searchText = "%" + searchText + "%";
-		users = usersRepository.searchByEmailAndName(pageable, searchText);
-		return users;
-	}
-
-	public Page<User> getAllAmigos(Pageable pageable, User user) {
-		List<User> amigos = new ArrayList<User>(user.getAmigos());
-		Page<User> users = new PageImpl<User>(amigos);
-		return users;
-	}
-
-	/**
-	 * Método que pretende buscar email usuarios con cualquier tipo de relacion
-	 * (peticiones/amistad) con un usuario que se pasa como praámetro
-	 * 
-	 * @param user
-	 * @return
-	 */
-	public List<String> getUsuariosConRelaciones(User user) {
-		List<String> listado = new ArrayList<String>();
-		Set<User> colegas = user.getAmigos();
-		Set<PeticionAmistad> peticionesEnviadas = user.getPeticionesEnviadas();
-		Set<PeticionAmistad> peticionesRecibidas = user.getPeticionesRecibidas();
-		for (User u : colegas) {
-			if (!listado.contains(u.getEmail()))
-				listado.add(u.getEmail());
-		}
-		for (PeticionAmistad p : peticionesEnviadas) {
-			if (!listado.contains(p.getDestino().getEmail()))
-				listado.add(p.getDestino().getEmail());
-		}
-		for (PeticionAmistad p : peticionesRecibidas) {
-			if (!listado.contains(p.getOrigen().getEmail()))
-				listado.add(p.getOrigen().getEmail());
-		}
-		return listado;
-	}
+	return listado;
+    }
 
 }

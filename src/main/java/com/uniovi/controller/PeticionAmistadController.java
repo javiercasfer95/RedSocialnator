@@ -18,55 +18,55 @@ import com.uniovi.services.UserService;
 @Controller
 public class PeticionAmistadController {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@Autowired
-	PeticionAmistadService peticionAmistadService;
+    @Autowired
+    PeticionAmistadService peticionAmistadService;
 
-	@RequestMapping("/peticiones/listRecibidas")
-	public String getListadoPeticionesTo(Pageable pageable, Model model, Principal princiapl) {
+    @RequestMapping("/peticiones/listRecibidas")
+    public String getListadoPeticionesTo(Pageable pageable, Model model, Principal princiapl) {
 
-		String email = princiapl.getName();
-		User yo = userService.getUserByEmail(email);
-		Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesToUser(pageable, yo);
-		model.addAttribute("peticionList", requests.getContent());
-		model.addAttribute("page", requests);
-		return "/peticiones/listRecibidas";
-	}
+	String email = princiapl.getName();
+	User yo = userService.getUserByEmail(email);
+	Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesToUser(pageable, yo);
+	model.addAttribute("peticionList", requests.getContent());
+	model.addAttribute("page", requests);
+	return "/peticiones/listRecibidas";
+    }
 
-	@RequestMapping("/peticiones/listEnviadas")
-	public String getListadoPeticionesFrom(Pageable pageable, Model model, Principal princiapl) {
+    @RequestMapping("/peticiones/listEnviadas")
+    public String getListadoPeticionesFrom(Pageable pageable, Model model, Principal princiapl) {
 
-		String email = princiapl.getName();
-		User yo = userService.getUserByEmail(email);
-		Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesFromUser(pageable, yo);
-		model.addAttribute("peticionList", requests.getContent());
-		model.addAttribute("page", requests);
-		return "/peticiones/listEnviadas";
-	}
+	String email = princiapl.getName();
+	User yo = userService.getUserByEmail(email);
+	Page<PeticionAmistad> requests = peticionAmistadService.getAllPeticionesFromUser(pageable, yo);
+	model.addAttribute("peticionList", requests.getContent());
+	model.addAttribute("page", requests);
+	return "/peticiones/listEnviadas";
+    }
 
-	@RequestMapping("/peticion/enviarPeticion")
-	public String enviarPeticion(Pageable pageabe, Model model, Principal principal, @RequestParam String emailRecibe) {
+    @RequestMapping("/peticion/enviarPeticion")
+    public String enviarPeticion(Pageable pageabe, Model model, Principal principal, @RequestParam String emailRecibe) {
 
-		// Para enviar peticiones me necesito a mi y necesito al que se la quiero enviar
-		String email = principal.getName();
-		User yo = userService.getUserByEmail(email);
-		User otroTio = userService.getUserByEmail(emailRecibe);
-		peticionAmistadService.crearPeticionAmistad(yo, otroTio);
-		return "redirect:/user/list";
-	}
+	// Para enviar peticiones me necesito a mi y necesito al que se la quiero enviar
+	String email = principal.getName();
+	User yo = userService.getUserByEmail(email);
+	User otroTio = userService.getUserByEmail(emailRecibe);
+	peticionAmistadService.crearPeticionAmistad(yo, otroTio);
+	return "redirect:/user/list";
+    }
 
-	@RequestMapping("/peticion/aceptarPeticion")
-	public String aceptarPeticion(Pageable pageabe, Model model, Principal principal,
-			@RequestParam String emailOrigen) {
+    @RequestMapping("/peticion/aceptarPeticion")
+    public String aceptarPeticion(Pageable pageabe, Model model, Principal principal,
+	    @RequestParam String emailOrigen) {
 
-		// Para enviar peticiones me necesito a mi y necesito al que se la quiero enviar
-		String email = principal.getName();
-		User yo = userService.getUserByEmail(email);
-		User otroTio = userService.getUserByEmail(emailOrigen);
-		peticionAmistadService.aceptarPeticionAmistad(yo, otroTio);
-		return "redirect:/peticiones/listRecibidas";
-	}
+	// Para enviar peticiones me necesito a mi y necesito al que se la quiero enviar
+	String email = principal.getName();
+	User yo = userService.getUserByEmail(email);
+	User otroTio = userService.getUserByEmail(emailOrigen);
+	peticionAmistadService.aceptarPeticionAmistad(yo, otroTio);
+	return "redirect:/peticiones/listRecibidas";
+    }
 
 }

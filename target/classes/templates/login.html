@@ -5,7 +5,7 @@
 
 	<nav th:replace="fragments/nav" />
 
-	<div id="errorLogin" class="alert alert-warning" th:if="${error} != null">
+	<div id="errorLogin" class="alert alert-danger" th:if="${error} != null">
 		<strong th:text="#{error.field}">Warning!</strong>
 		<p th:text="#{error.login}">Indicates a warning that might need
 			attention.</p>

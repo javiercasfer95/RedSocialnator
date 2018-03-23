@@ -15,48 +15,48 @@ import com.uniovi.services.UserService;
 @Controller
 public class AdminController {
 
-	@Autowired
-	AdminService adminService;
-	
-	@Autowired
-	UserService userService;
+    @Autowired
+    AdminService adminService;
 
-	@RequestMapping(value = "/debug/list")
-	public String debugListUsers(Pageable pageable, Model model,
-			@RequestParam(value = "", required = false) String searchText) {
-		Page<User> users = userService.getUsers(pageable);
-		if (searchText != null && !searchText.isEmpty()) {
-			users = userService.searchUserByEmailAndName(pageable, searchText);
-			model.addAttribute("usersList", users.getContent());
-		} else {
-			model.addAttribute("usersList", users.getContent());
-		}
+    @Autowired
+    UserService userService;
 
-		model.addAttribute("page", users);
-		return "debug/list";
+    @RequestMapping(value = "/debug/list")
+    public String debugListUsers(Pageable pageable, Model model,
+	    @RequestParam(value = "", required = false) String searchText) {
+	Page<User> users = userService.getUsers(pageable);
+	if (searchText != null && !searchText.isEmpty()) {
+	    users = userService.searchUserByEmailAndName(pageable, searchText);
+	    model.addAttribute("usersList", users.getContent());
+	} else {
+	    model.addAttribute("usersList", users.getContent());
 	}
 
-	@RequestMapping(value = { "/debug/deleteAllUsers" })
-	public String deleteAllUsers(Model model) {
-		adminService.deleteAllUsers();
-		return "redirect:/home";
-	}
+	model.addAttribute("page", users);
+	return "debug/list";
+    }
 
-	@RequestMapping(value = "/debug/deleteUser")
-	public String deleteUser(Pageable pageable, Model model, @RequestParam String userBorraEmail) {
-		User userborrar = userService.getUserByEmail(userBorraEmail);
-		if (userborrar == null) {
-			return "redirect:/debug/list";
-		} else {
-			adminService.deleteUser(userborrar);
-			return "redirect:/debug/list";
-		}
+    @RequestMapping(value = { "/debug/deleteAllUsers" })
+    public String deleteAllUsers(Model model) {
+	adminService.deleteAllUsers();
+	return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/debug/deleteUser")
+    public String deleteUser(Pageable pageable, Model model, @RequestParam String userBorraEmail) {
+	User userborrar = userService.getUserByEmail(userBorraEmail);
+	if (userborrar == null) {
+	    return "redirect:/debug/list";
+	} else {
+	    adminService.deleteUser(userborrar);
+	    return "redirect:/debug/list";
 	}
-	
-	@RequestMapping(value = "/debug/generateDefault")
-	public String generateDefault(Pageable pageable, Model model) {
-		adminService.getDefaultUsers();
-		return "redirect:/home";
-	}
+    }
+
+    @RequestMapping(value = "/debug/generateDefault")
+    public String generateDefault(Pageable pageable, Model model) {
+	adminService.getDefaultUsers();
+	return "redirect:/home";
+    }
 
 }
