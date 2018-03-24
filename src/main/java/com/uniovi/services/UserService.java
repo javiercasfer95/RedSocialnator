@@ -7,8 +7,6 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -82,7 +80,7 @@ public class UserService {
      * BUSQUEDA
      */
     public Page<User> searchUserByEmailAndName(Pageable pageable, String searchText) {
-	Page<User> users = new PageImpl<User>(new LinkedList());
+	Page<User> users = new PageImpl<User>(new LinkedList<User>());
 	searchText = "%" + searchText + "%";
 	users = usersRepository.searchByEmailAndName(pageable, searchText);
 	return users;

@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 
@@ -40,7 +39,7 @@ public class DatosEjemplo {
     // @PostConstruct
     public void init() {
 
-	usuariosAñadir = new HashSet();
+	usuariosAñadir = new HashSet<User>();
 	System.out.println("-------------------Se van a cargar usuarios por defecto------------------------");
 	User user1 = new User("javier@correo.es", "Javier", "Castro");
 	user1.setPassword("123456");
@@ -79,7 +78,7 @@ public class DatosEjemplo {
 
     @PostConstruct
     public void genereteDefaultUsers() {
-	usuariosAñadir = new HashSet();
+	usuariosAñadir = new HashSet<User>();
 	System.out.println("-------------------Se van a cargar usuarios por defecto------------------------");
 	User user1 = new User("javier@correo.es", "Javier", "Castro");
 	user1.setPassword("123456");

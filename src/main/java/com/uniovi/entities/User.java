@@ -26,8 +26,6 @@ public class User {
     @OneToMany(mappedBy = "origen", cascade = CascadeType.ALL)
     private Set<PeticionAmistad> peticionesEnviadas;
 
-    // @OneToMany
-    // @ManyToMany(cascade = CascadeType.ALL)
     @ManyToMany
     @JoinTable(name = "Amigos", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = {
 	    @JoinColumn(name = "amigo_id") })

@@ -10,8 +10,6 @@ import com.uniovi.entities.User;
 
 public interface PeticionAmistadRepository extends CrudRepository<PeticionAmistad, Long> {
 
-
-
     Page<PeticionAmistad> findAll(Pageable pageable);
 
     @Query("SELECT p FROM PeticionAmistad p Where p.destino = ?1 AND p.aceptada = false")
@@ -22,7 +20,6 @@ public interface PeticionAmistadRepository extends CrudRepository<PeticionAmista
 
     @Query("SELECT count(p) FROM PeticionAmistad p WHERE (p.origen = ?1 AND p.destino = ?2) OR (p.origen = ?2 AND p.destino = ?1)")
     int numeroPeticionesEntreDosUsuarios(User origen, User destino);
-
 
     @Query("SELECT p FROM PeticionAmistad p WHERE (p.origen = ?1 AND p.destino = ?2) OR (p.origen = ?2 AND p.destino = ?1)")
     PeticionAmistad findByUsers(User origen, User destino);
